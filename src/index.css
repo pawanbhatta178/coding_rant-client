@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
+
+.btn-primary {
+  @apply bg-transparent hover:bg-blue-900 text-blue-700 font-semibold hover:text-gray-200 py-2 px-10  border border-blue-500 shadow hover:border-transparent rounded-lg;
+}
+
+.btn-secondary {
+  @apply bg-transparent hover:bg-blue-900 text-blue-700 font-semibold hover:text-gray-200 py-2 px-10  border border-blue-500 shadow hover:border-transparent rounded-lg;
+}
+
 @tailwind utilities;
