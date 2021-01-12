@@ -1,0 +1,54 @@
+.option-menu {
+  opacity: 0;
+  animation: slide-down 0.2s ease-in 0s 1;
+  animation-fill-mode: both;
+}
+
+.rotate {
+  animation: rotate 0.2s ease-in-out 0s 1;
+  animation-fill-mode: both;
+}
+
+.rotate-opp {
+  animation: rotate 0.2s ease-in-out 0s 1;
+  animation-fill-mode: both;
+}
+
+@keyframes rotate-opp {
+  0% {
+    transform: rotate(-180deg);
+  }
+  100% {
+    transform-origin: center;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform-origin: center;
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translate(0, -50%);
+  }
+  25% {
+    opacity: 0;
+    transform: translate(0, -35%);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translate(0, -25%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}

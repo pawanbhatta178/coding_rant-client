@@ -29,4 +29,8 @@
   @apply hover:opacity-90;
 }
 
+.w-26 {
+  width: 6.4rem;
+}
+
 @tailwind utilities;

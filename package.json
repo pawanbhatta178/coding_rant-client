@@ -13,9 +13,9 @@
     "re-resizable": "^6.9.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-icons": "^4.1.0",
     "react-resizable": "^1.11.0",
     "react-scripts": "4.0.1",
-    "react-split-pane": "^0.1.92",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
     "web-vitals": "^0.2.4"
   },
