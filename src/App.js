@@ -1,7 +1,7 @@
 
 import { Resizable } from "re-resizable";
 import Button from "./components/Button";
-
+import Dropdown from "./components/Dropdown"
 const style = {
   display: "flex",
   alignItems: "center",
@@ -23,12 +23,12 @@ function App() {
   >
 
       </Resizable>
-      <Button size="lg" disabled={true} type="primary">Enable</Button>
-      <Button size="lg" disabled={false} type="secondary">Enable</Button>
-      <Button size="lg" disabled="false" type="basic">Enable</Button>
-      <Button size="lg" disabled="false" type="delete">Enable</Button>
-      <Button size="lg" disabled="false" type="deleteOutline">Enable</Button>
-
+      <Button size="sm" type="primary">Enable</Button>
+      <Button size="sm"  type="secondary">Enable</Button>
+      <Button size="sm"  type="basic">Enable</Button>
+      <Button size="sm"  type="delete">Enable</Button>
+      <Button size="sm"  type="deleteOutline">Enable</Button>
+       <Dropdown/>
 
     </div>
   );

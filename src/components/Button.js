@@ -1,9 +1,11 @@
+
+
 export const ButtonType = {
-    primary: "bg-blue-700 hover:bg-blue-800 text-gray-100 font-semibold rounded-lg shadow ",
-    secondary: "bg-gray-100 hover:bg-gray-300 hover:border-blue-500 text-blue-800 font-semibold  border border-blue-300 shadow rounded-lg",
-    basic: "bg-transparent hover:text-blue-500 text-blue-800 font-semibold rounded-lg",
-    delete: "bg-red-300 hover:bg-red-500 text-white font-semibold rounded-lg shadow",
-    deleteOutline:"bg-white hover:bg-gray-200 hover:border-red-500 text-red-500 font-semibold rounded-lg border border-red-300 shadow",
+    primary: "secondary-bg secondary-text hover font-semibold rounded shadow border border-purple-500",
+    secondary: "primary-bg primary-text hover  border border-purple-300 hover:border-purple-800 font-semibold shadow rounded",
+    basic: "bg-transparent hover primary-text font-semibold rounded",
+    delete: "bg-red-500 hover text-white font-semibold rounded shadow",
+    deleteOutline:"bg-white hover hover:border-red-500 text-red-500 font-semibold rounded border border-red-300 shadow",
 };
 
 export const ButtonSize = {
@@ -16,7 +18,7 @@ const Button=({size, type, children, disabled})=> {
 
     // This can be improved. I’m keeping it simple here by joining two strings.
     const classNames = ButtonType[type] + " " + ButtonSize[size];
-    return (disabled ? <button  className={`${classNames} opacity-50 cursor-not-allowed hover:none`}>{children}</button> : <button className={classNames}>{children}</button>);
+  return <button className={disabled? `${classNames} opacity-50 hover:opacity-50 cursor-not-allowed`: classNames}>{children}</button>;
     
 }
 
