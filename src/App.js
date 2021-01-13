@@ -27,8 +27,8 @@ function App() {
   const [chosenLang, setChosenLang] = useState('js');
 
 
-  const onSelect=(e) => {
-    setChosenLang(e.target.id);
+  const changeLang=(id) => {
+    setChosenLang(id);
   }
 
   return (
@@ -49,9 +49,9 @@ function App() {
       <Button size="sm"  type="delete">Enable</Button>
       <Button size="sm" type="deleteOutline">Enable
       </Button>
-      <Dropdown options={data} defaultVal={chosenLang} onSelect={onSelect }> 
+      <Dropdown options={data} defaultVal={chosenLang} onChange={changeLang}> 
         <div className="pl-2">
-         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" fill="currentColor" className=" bi bi-caret-down-fill" viewBox="0 0 16 16">
+         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" fill="currentColor" className="bi bi-caret-down-fill" viewBox="0 0 16 16">
             <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
           </svg>
           </div>
