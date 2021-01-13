@@ -16,19 +16,22 @@ const style = {
 function App() {
 
   const [data] = useState([
-    { id: "js", name: "JavaScript", more: "Some more information" },
-    { id: "py", name: "Python", more: "Some more information" },
-    { id: "go", name: "Golang", more: "Some more information" },
-    { id: "ts", name: "Typescript", more: "Some more information" },
-    { id: "c", name: "C", more: "Some more information" },
-    { id: "cpp", name:"C++", more: "Some more information" },
+    { id: "js", name: "JavaScript",active:true , more: "Some more information" },
+    { id: "py", name: "Python",active:true, more: "Coming soon" },
+    { id: "go", name: "Golang",active:false, more: "Coming soon" },
+    { id: "ts", name: "Typescript", active:false, more: "Coming soon" },
+    { id: "c", name: "C", active:false, more: "Coming soon" },
+    { id: "cpp", name: "C++", active:false,more: "Some more information" },
 
   ]);
   const [chosenLang, setChosenLang] = useState('js');
+   
 
-
-  const changeLang=(id) => {
-    setChosenLang(id);
+  const changeLang = (id) => {
+    if (data.find(key => (key.id === id && key.active === true))) {
+      setChosenLang(id);
+    }
+    return;
   }
 
   return (

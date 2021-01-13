@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react'
-
+import React, {useState} from 'react'
 import OptionMenu from './OptionMenu';
 
 
 
-const Dropdown = ({ children, options, defaultVal, onChange }) => {
+const Dropdown = ({ options, defaultVal, onChange }) => {
     
     const [showOptions, setShowOptions]=useState(false);
 
