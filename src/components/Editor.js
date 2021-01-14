@@ -1,33 +1,40 @@
-import React,{useState,useRef} from "react"; 
-import MonacoEditor from '@monaco-editor/react';
+import React, { useState, useRef, useContext } from "react";
+import MonacoEditor from "@monaco-editor/react";
+import EditorAction from "./EditorAction";
+import EditorContext from "./EditorContext.js";
 
 const availableLanguage = {
-    js: 'javascript',
-    py: 'python',
-    cpp: 'cpp',
-    c: 'c',
-    ts: 'typescript',
-    go:'go',
-}
+  js: "javascript",
+  py: "python",
+  cpp: "cpp",
+  c: "c",
+  ts: "typescript",
+  go: "go",
+  java: "java",
+};
 
+const Editor = () => {
+  const editorRef = useRef();
+  const [isEditorReady, setIsEditorReady] = useState(false);
+  const { chosenLang, startingCodes } = useContext(EditorContext);
 
+  function handleEditorDidMount(_, editor) {
+    setIsEditorReady(true);
+    editorRef.current = editor;
+  }
 
-const Editor = ({activeLanguage, codeSnippet}) =>{
-    const editorRef = useRef();
-    const [isEditorReady, setIsEditorReady] = useState(false);
-    function handleEditorDidMount(_, editor) {
-          setIsEditorReady(true);
-        editorRef.current = editor;
-      }
-     
-
-    return (
+  return (
     <>
-    <div className="h-9/10 border ">
-    <MonacoEditor height="100%" language={availableLanguage[activeLanguage] || 'javascript'} value={codeSnippet} editorDidMount={handleEditorDidMount} /> 
-    </div>
-    <div className="border"></div>
+      <div className="code-editor-height border ">
+        <MonacoEditor
+          height="100%"
+          language={availableLanguage[chosenLang] || "javascript"}
+          value={startingCodes[chosenLang]}
+          editorDidMount={handleEditorDidMount}
+        />
+      </div>
+      <EditorAction className="flex h-full" />
     </>
-);
-}
+  );
+};
 export default Editor;
