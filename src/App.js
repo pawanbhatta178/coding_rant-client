@@ -33,26 +33,19 @@ function App() {
   return (
     <div className="h-screen">
       <div className="navbar-height">navbar</div>
-      <div className="flex body-height">
+      <div className="w-screen body-height">
         <SplitPane>
-         <div className="w-1/2 border resize-x">
-      
-         <Dropdown options={data} defaultVal={chosenLang} onChange={changeLang}/> 
-         <Editor activeLanguage={chosenLang} codeSnippet={startingCodes[chosenLang]}/>
-
-        </div>
-        <div className="w-1/2">
-          <div className="">
-            <Question/>
-    
-        
+         <div className="h-full">
+           <Dropdown options={data} defaultVal={chosenLang} onChange={changeLang}/> 
+           <Editor activeLanguage={chosenLang} codeSnippet={startingCodes[chosenLang]}/>
           </div>
-
-          </div>
+         <div className="h-full">
+              <Question/> 
+         </div>
         </SplitPane>
       </div>
     
-      </div>
+   </div>
   );
 }
 

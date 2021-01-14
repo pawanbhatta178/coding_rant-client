@@ -26,7 +26,7 @@ const Editor = ({activeLanguage, codeSnippet}) =>{
     <div className="h-9/10 border">
     <MonacoEditor height="100%" language={availableLanguage[activeLanguage] || 'javascript'} value={codeSnippet} editorDidMount={handleEditorDidMount} /> 
     </div>
-    <div className="full border"></div>
+    <div className="h-full border"></div>
     </>
 );
 }

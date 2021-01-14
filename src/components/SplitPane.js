@@ -16,13 +16,13 @@ const LeftSplit = ({ children }) => {
         }
         leftRef.current.style.width = `${leftWidth}px`;
       });
-    return <div className="split-pane-left" ref={leftRef}>{ children}</div>;
+    return <div className="w-1/2" ref={leftRef}>{ children}</div>;
 
 }
 
 const RightSplit = ({ children }) => { 
 
-    return <div className="split-pane-right" >{children} </div>;
+    return <div className="w-1/2" >{children} </div>;
 
 }
 
@@ -65,7 +65,7 @@ const SplitPane = ({ children, ...props }) => {
     
     
     return (
-        <div {...props} className="split-pane" ref={splitPaneRef}>
+        <div {...props} className="flex border h-full" ref={splitPaneRef}>
             <splitPaneContext.Provider value={{ leftWidth, setLeftWidth }}>
             <LeftSplit children={children[0] }/>
                 <div className="separator" onMouseDown={onMouseDown}/>
