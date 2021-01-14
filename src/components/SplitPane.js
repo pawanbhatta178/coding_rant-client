@@ -1,5 +1,4 @@
 import React from 'react'
-import './SplitPane.css';
 
 
 const splitPaneContext = React.createContext();
@@ -65,10 +64,10 @@ const SplitPane = ({ children, ...props }) => {
     
     
     return (
-        <div {...props} className="flex border h-full" ref={splitPaneRef}>
+        <div className="flex border h-full" {...props}  ref={splitPaneRef}>
             <splitPaneContext.Provider value={{ leftWidth, setLeftWidth }}>
             <LeftSplit children={children[0] }/>
-                <div className="separator" onMouseDown={onMouseDown}/>
+                <div className="border-4 border-gray-200 cursor-move" onMouseDown={onMouseDown}/>
             <RightSplit children={children[1] }/>
             </splitPaneContext.Provider>
         </div>

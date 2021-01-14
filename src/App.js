@@ -34,17 +34,15 @@ function App() {
     <div className="h-screen">
       <div className="navbar-height">navbar</div>
       <div className="w-screen body-height">
-        <SplitPane>
+        <SplitPane >
          <div className="h-full">
            <Dropdown options={data} defaultVal={chosenLang} onChange={changeLang}/> 
            <Editor activeLanguage={chosenLang} codeSnippet={startingCodes[chosenLang]}/>
           </div>
-         <div className="h-full">
-              <Question/> 
-         </div>
+          <Question /> 
         </SplitPane>
       </div>
-    
+  
    </div>
   );
 }
