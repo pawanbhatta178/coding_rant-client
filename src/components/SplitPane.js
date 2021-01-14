@@ -1,0 +1,80 @@
+import React from 'react'
+import './SplitPane.css';
+
+
+const splitPaneContext = React.createContext();
+
+const LeftSplit = ({ children }) => { 
+    const leftRef = React.createRef();
+    const { leftWidth, setLeftWidth } = React.useContext(splitPaneContext);
+    React.useEffect(() => {
+        if (!leftWidth) {
+            console.log(leftRef.current.clientWidth);
+          setLeftWidth(leftRef.current.clientWidth);
+          leftRef.current.style.flex = "none";
+          return;
+        }
+        leftRef.current.style.width = `${leftWidth}px`;
+      });
+    return <div className="split-pane-left" ref={leftRef}>{ children}</div>;
+
+}
+
+const RightSplit = ({ children }) => { 
+
+    return <div className="split-pane-right" >{children} </div>;
+
+}
+
+
+const SplitPane = ({ children, ...props }) => {
+    const [leftWidth, setLeftWidth] = React.useState(null);
+    const separatorXPosition = React.useRef(null);
+
+    const splitPaneRef = React.createRef();
+
+    const onMouseDown = e => {
+        separatorXPosition.current = e.clientX;
+    };
+
+    const onMouseMove = e => {
+        if (!separatorXPosition.current) {
+          return;
+        }
+    
+        const newLeftWidth = leftWidth + e.clientX - separatorXPosition.current;
+        separatorXPosition.current = e.clientX;
+
+        
+        setLeftWidth(newLeftWidth);
+    };
+    
+    const onMouseUp = () => {
+        separatorXPosition.current = null;
+    };
+
+    React.useEffect(() => {
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+    
+        return () => {
+          document.removeEventListener("mousemove", onMouseMove);
+          document.removeEventListener("mouseup", onMouseUp);
+        };
+      });
+    
+    
+    return (
+        <div {...props} className="split-pane" ref={splitPaneRef}>
+            <splitPaneContext.Provider value={{ leftWidth, setLeftWidth }}>
+            <LeftSplit children={children[0] }/>
+                <div className="separator" onMouseDown={onMouseDown}/>
+            <RightSplit children={children[1] }/>
+            </splitPaneContext.Provider>
+        </div>
+    )
+}
+
+
+
+export default SplitPane

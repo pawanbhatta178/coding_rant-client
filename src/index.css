@@ -1,3 +1,6 @@
+:root {
+  --nav-height: 5%;
+}
 @tailwind base;
 @tailwind components;
 
@@ -31,6 +34,18 @@
 
 .w-26 {
   width: 6.4rem;
+}
+
+.h-9\/10 {
+  height: 88%;
+}
+
+.navbar-height {
+  height: var(--nav-height);
+}
+
+.body-height {
+  height: calc(100% - var(--nav-height));
 }
 
 @tailwind utilities;

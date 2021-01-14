@@ -1,17 +1,9 @@
 import React, { useState } from 'react';
-import { Resizable } from "re-resizable";
-import Button from "./components/Button";
+
 import Dropdown from "./components/Dropdown";
-import {ReactComponent as ReactLogo} from './icons/caret-down-fill.svg';
-
-
-const style = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  border: "solid 1px #ddd",
-  background: "#f0f0f0"
-};
+import Editor from "./components/Editor";
+import Question from './components/Question';
+import SplitPane from "./components/SplitPane";
 
 function App() {
 
@@ -19,13 +11,17 @@ function App() {
     { id: "js", name: "JavaScript",active:true , more: "Some more information" },
     { id: "py", name: "Python",active:true, more: "Coming soon" },
     { id: "go", name: "Golang",active:false, more: "Coming soon" },
-    { id: "ts", name: "Typescript", active:false, more: "Coming soon" },
+    { id: "ts", name: "Typescript", active:true, more: "Coming soon" },
     { id: "c", name: "C", active:false, more: "Coming soon" },
     { id: "cpp", name: "C++", active:false,more: "Some more information" },
-
   ]);
   const [chosenLang, setChosenLang] = useState('js');
    
+  const [startingCodes] = useState({
+    js: "//your js code goes here",
+    py: "//your py code goes here",
+    ts: "//your ts code goes here"
+  });
 
   const changeLang = (id) => {
     if (data.find(key => (key.id === id && key.active === true))) {
@@ -35,32 +31,28 @@ function App() {
   }
 
   return (
-    <div className="App text-black-500 resize-x">
-      Hello
-      <Resizable
-    style={style}
-    defaultSize={{
-      width: 200,
-      height: 200
-    }}
-  >
+    <div className="h-screen">
+      <div className="navbar-height">navbar</div>
+      <div className="flex body-height">
+        <SplitPane>
+         <div className="w-1/2 border resize-x">
+      
+         <Dropdown options={data} defaultVal={chosenLang} onChange={changeLang}/> 
+         <Editor activeLanguage={chosenLang} codeSnippet={startingCodes[chosenLang]}/>
 
-      </Resizable>
-      <Button size="sm"  type="primary">Easjjsjasjasjjasjasj</Button>
-      <Button size="sm" type="secondary">Enable <ReactLogo/></Button>
-      <Button size="sm"  type="basic">Enable</Button>
-      <Button size="sm"  type="delete">Enable</Button>
-      <Button size="sm" type="deleteOutline">Enable
-      </Button>
-      <Dropdown options={data} defaultVal={chosenLang} onChange={changeLang}> 
-        <div className="pl-2">
-         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" fill="currentColor" className="bi bi-caret-down-fill" viewBox="0 0 16 16">
-            <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-          </svg>
-          </div>
-       </Dropdown>
+        </div>
+        <div className="w-1/2">
+          <div className="">
+            <Question/>
     
-    </div>
+        
+          </div>
+
+          </div>
+        </SplitPane>
+      </div>
+    
+      </div>
   );
 }
 
