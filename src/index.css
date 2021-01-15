@@ -1,6 +1,9 @@
 :root {
-  --nav-height: 5%;
+  --nav-height: 2.5rem;
   --code-editor-height: 88%;
+}
+::selection {
+  background: none;
 }
 
 @tailwind base;
@@ -55,7 +58,7 @@
 }
 
 .editor-actions-height {
-  height: calc(100% - var(--code-editor-height) - var(--code-editor-height));
+  height: 2.5rem;
 }
 
 @tailwind utilities;

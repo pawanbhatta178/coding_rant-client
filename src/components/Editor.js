@@ -1,6 +1,5 @@
 import React, { useState, useRef, useContext } from "react";
 import MonacoEditor from "@monaco-editor/react";
-import EditorAction from "./EditorAction";
 import EditorContext from "./EditorContext.js";
 
 const availableLanguage = {

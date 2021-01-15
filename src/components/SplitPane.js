@@ -2,8 +2,9 @@ import React from "react";
 
 const splitPaneContext = React.createContext();
 
-const SplitPane = ({ children, ...props }) => {
+const SplitPane = ({ minLeftWidth, minRightWidth, children, ...props }) => {
   const [leftWidth, setLeftWidth] = React.useState(null);
+  const [totalWidth, setTotalWidth] = React.useState(null);
   const separatorXPosition = React.useRef(null);
 
   const splitPaneRef = React.createRef();
@@ -18,22 +19,40 @@ const SplitPane = ({ children, ...props }) => {
     }
 
     const newLeftWidth = leftWidth + e.clientX - separatorXPosition.current;
-    separatorXPosition.current = e.clientX;
-
-    setLeftWidth(newLeftWidth);
+    if (
+      newLeftWidth > parseInt(minLeftWidth) &&
+      newLeftWidth < parseInt(totalWidth) - parseInt(minRightWidth)
+    ) {
+      separatorXPosition.current = e.clientX;
+      setLeftWidth(newLeftWidth);
+    }
   };
 
   const onMouseUp = () => {
     separatorXPosition.current = null;
   };
 
+  const onResize = (e) => {
+    setTotalWidth(splitPaneRef.current.clientWidth);
+  };
+
+  React.useEffect(() => {
+    if (!totalWidth) {
+      console.log(splitPaneRef.current.clientWidth);
+      setTotalWidth(splitPaneRef.current.clientWidth);
+      return;
+    }
+  }, []);
+
   React.useEffect(() => {
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onMouseUp);
+    window.addEventListener("resize", onResize);
 
     return () => {
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseup", onMouseUp);
+      window.removeEventListener("resize", onResize);
     };
   });
 
