@@ -64,7 +64,7 @@ const LeftSplit = ({ children }) => {
     leftRef.current.style.width = `${leftWidth}px`;
   });
   return (
-    <div className="w-1/2" ref={leftRef}>
+    <div className="w-1/2 border " ref={leftRef}>
       {children}
     </div>
   );

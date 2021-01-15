@@ -5,7 +5,7 @@ const EditorAction = ({ ...props }) => {
   return (
     <div {...props}>
       <Button size="sm" type="neutral">
-        Compile
+        Submit
       </Button>
     </div>
   );

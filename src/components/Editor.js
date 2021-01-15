@@ -24,17 +24,14 @@ const Editor = () => {
   }
 
   return (
-    <>
-      <div className="code-editor-height border ">
-        <MonacoEditor
-          height="100%"
-          language={availableLanguage[chosenLang] || "javascript"}
-          value={startingCodes[chosenLang]}
-          editorDidMount={handleEditorDidMount}
-        />
-      </div>
-      <EditorAction className="flex h-full" />
-    </>
+    <div className="code-editor-height border  ">
+      <MonacoEditor
+        height="100%"
+        language={availableLanguage[chosenLang] || "javascript"}
+        value={startingCodes[chosenLang]}
+        editorDidMount={handleEditorDidMount}
+      />
+    </div>
   );
 };
 export default Editor;

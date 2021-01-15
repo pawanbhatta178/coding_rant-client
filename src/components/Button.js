@@ -6,13 +6,13 @@ export const ButtonType = {
   secondary: `${baseButtonStyle} primary-bg primary-text hover  border border-purple-300 hover:border-purple-800 font-semibold shadow rounded`,
   basic: "bg-transparent hover primary-text font-semibold rounded",
   neutral:
-    "bg-transparent hover:bg-gray-200 text-gray-800 font-semibold border rounded",
+    "bg-gray-600 text-gray-200 hover font-semibold border rounded shadow",
   delete: "bg-red-500 hover text-white font-semibold rounded shadow",
   deleteOutline: `${baseButtonStyle} bg-white hover hover:border-red-500 text-red-500 font-semibold rounded border border-red-300 shadow`,
 };
 
 export const ButtonSize = {
-  sm: "py-2 px-4 text-xs",
+  sm: "py-2 px-6 text-xs",
   lg: "py-2 px-10 text-base",
   xl: "py-3 px-8 text-lg",
 };

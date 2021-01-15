@@ -55,7 +55,7 @@
 }
 
 .editor-actions-height {
-  height: calc(100% - var(--code-editor-height));
+  height: calc(100% - var(--code-editor-height) - var(--code-editor-height));
 }
 
 @tailwind utilities;

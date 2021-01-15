@@ -4,7 +4,8 @@ import Editor from "./components/Editor";
 import Question from "./components/Question";
 import SplitPane from "./components/SplitPane";
 import EditorContext from "./components/EditorContext.js";
-
+import EditorAction from "./components/EditorAction";
+import EditorNavBar from "./components/EditorNavBar";
 function App() {
   const [languages] = useState([
     {
@@ -36,16 +37,17 @@ function App() {
   };
 
   return (
-    <div className="h-screen">
+    <div className="h-screen overflow-y-hidden">
       <div className="navbar-height">navbar</div>
       <div className="w-screen body-height">
         <SplitPane>
-          <div className="h-full">
+          <div className="h-full flex flex-col border ">
             <EditorContext.Provider
               value={{ languages, startingCodes, chosenLang, changeLang }}
             >
-              <Dropdown />
+              <EditorNavBar className="flex justify-between py-1 bg-gray-200" />
               <Editor />
+              <EditorAction className="flex-1 flex justify-center py-1 bg-gray-200" />
             </EditorContext.Provider>
           </div>
           <Question />

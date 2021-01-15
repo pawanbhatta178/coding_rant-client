@@ -1,7 +1,12 @@
 import React from "react";
+import Dropdown from "./Dropdown";
 
-const EditorNavBar = () => {
-  return <div>Editor Nav Bar</div>;
+const EditorNavBar = ({ ...props }) => {
+  return (
+    <div {...props}>
+      <Dropdown />
+    </div>
+  );
 };
 
 export default EditorNavBar;
