@@ -1,6 +1,6 @@
 import React, { useState, useRef, useContext } from "react";
 import MonacoEditor from "@monaco-editor/react";
-import EditorContext from "./EditorContext.js";
+import EditorContext from "../EditorContext.js";
 
 const availableLanguage = {
   js: "javascript",

@@ -57,7 +57,7 @@ const SplitPane = ({ minLeftWidth, minRightWidth, children, ...props }) => {
   });
 
   return (
-    <div className="flex border h-full" {...props} ref={splitPaneRef}>
+    <div {...props} ref={splitPaneRef}>
       <splitPaneContext.Provider value={{ leftWidth, setLeftWidth }}>
         <LeftSplit children={children[0]} />
         <div

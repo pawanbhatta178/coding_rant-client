@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import OptionMenu from "./OptionMenu";
-import EditorContext from "./EditorContext.js";
+import EditorContext from "../EditorContext";
 
 const Dropdown = () => {
   const [showOptions, setShowOptions] = useState(false);
