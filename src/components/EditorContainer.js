@@ -38,7 +38,7 @@ const EditorContainer = ({ ...props }) => {
       <EditorContext.Provider
         value={{ languages, startingCodes, chosenLang, changeLang }}
       >
-        <EditorNavBar className="flex justify-between py-1 bg-gray-200" />
+        <EditorNavBar className="flex justify-end py-1 bg-gray-200" />
         <Editor />
         <EditorAction className="flex-1 flex editor-actions-height justify-center py-1 bg-gray-200" />
       </EditorContext.Provider>

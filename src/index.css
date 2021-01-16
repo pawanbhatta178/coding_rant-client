@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --nav-height: 2.5rem;
   --code-editor-height: 88%;
@@ -5,9 +9,6 @@
 ::selection {
   background: none;
 }
-
-@tailwind base;
-@tailwind components;
 
 .primary-bg {
   @apply bg-purple-100;
@@ -61,4 +62,7 @@
   height: 2.5rem;
 }
 
-@tailwind utilities;
+.logo-style::first-letter,
+.logo-first-letter {
+  @apply text-red-800 font-semibold text-2xl;
+}

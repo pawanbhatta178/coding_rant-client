@@ -4,7 +4,8 @@ export const ButtonType = {
   primary:
     "secondary-bg secondary-text hover font-semibold rounded shadow border border-purple-500",
   secondary: `${baseButtonStyle} primary-bg primary-text hover  border border-purple-300 hover:border-purple-800 font-semibold shadow rounded`,
-  basic: "bg-transparent hover primary-text font-semibold rounded",
+  basic:
+    "bg-transparent opacity-70 hover:opacity-100 text-gray-800 focus:outline-none ",
   neutral:
     "bg-gray-600 text-gray-200 hover font-semibold border rounded shadow",
   delete: "bg-red-500 hover text-white font-semibold rounded shadow",
@@ -12,6 +13,7 @@ export const ButtonType = {
 };
 
 export const ButtonSize = {
+  xs: "text-xs py-2",
   sm: "py-2 px-6 text-xs",
   lg: "py-2 px-10 text-base",
   xl: "py-3 px-8 text-lg",
@@ -19,11 +21,12 @@ export const ButtonSize = {
 
 export const disabledStyle = "opacity-50 hover:opacity-50 cursor-not-allowed";
 
-const Button = ({ size, type, children, disabled }) => {
+const Button = ({ size, type, children, disabled, ...props }) => {
   // This can be improved. I’m keeping it simple here by joining two strings.
   const classNames = ButtonType[type] + " " + ButtonSize[size];
   return (
     <button
+      {...props}
       className={disabled ? `${classNames} ${disabledStyle}` : classNames}
     >
       {children}
