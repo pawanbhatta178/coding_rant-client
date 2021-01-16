@@ -3,10 +3,10 @@ import Button from "./Button";
 import ModalContext from "../ModalContext";
 
 const NavItem = ({ type }) => {
-  const { isModalOn, setIsModalOn } = useContext(ModalContext);
+  const { showModal, setModal } = useContext(ModalContext);
   return (
     <div className="px-2">
-      <Button size="xs" type="basic" onClick={() => setIsModalOn(!isModalOn)}>
+      <Button size="xs" type="basic" onClick={() => setModal(type)}>
         {type}
       </Button>
     </div>

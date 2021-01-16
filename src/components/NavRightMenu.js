@@ -7,7 +7,7 @@ const NavRightMenu = () => {
 
   return (
     <div className="flex justify-end w-1/2">
-      {user ? <NavItem type="Logout" /> : <NavItem type="Sign In" />}
+      {user ? <NavItem type="Logout" /> : <NavItem type="Login" />}
     </div>
   );
 };

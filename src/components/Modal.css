@@ -1,0 +1,15 @@
+.modal-enter {
+  transform: scale(0);
+}
+.modal-enter-active {
+  transform: scale(1);
+  transition: all 1000ms;
+}
+
+.modal-exit {
+}
+
+.modal-exit-active {
+  transform: scale(0);
+  transition: all 1000ms;
+}

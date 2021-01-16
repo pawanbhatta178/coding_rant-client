@@ -35,7 +35,7 @@
 }
 
 .hover {
-  @apply hover:opacity-90;
+  @apply opacity-70 hover:opacity-90;
 }
 
 .w-26 {

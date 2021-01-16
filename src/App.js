@@ -1,16 +1,34 @@
 import React from "react";
+import { CSSTransition } from "react-transition-group";
+
 import Modal from "./components/Modal";
 import NavBar from "./components/NavBar";
 import SplitPane from "./components/SplitPane";
 import EditorContainer from "./components/EditorContainer";
 import Question from "./components/Question";
+
 import UserContext from "./UserContext";
 import ModalContext from "./ModalContext";
+
 function App() {
-  const [isModalOn, setIsModalOn] = React.useState(true);
+  const [showModal, setShowModal] = React.useState(false);
+
+  const setModal = (modelName) => {
+    switch (modelName) {
+      case "Login":
+        setShowModal("Login");
+        break;
+      case "Register":
+        setShowModal("Register");
+        break;
+      default:
+        setShowModal(false);
+    }
+  };
+
   return (
     <div className="relative h-screen overflow-y-hidden">
-      <ModalContext.Provider value={{ isModalOn, setIsModalOn }}>
+      <ModalContext.Provider value={{ showModal, setModal }}>
         <UserContext.Provider value={{ user: null }}>
           <NavBar className="navbar-height" />
           <div className="w-screen body-height">
@@ -23,7 +41,15 @@ function App() {
               <Question />
             </SplitPane>
           </div>
-          {isModalOn && <Modal className="absolute top-0" />}
+
+          <CSSTransition
+            in={showModal}
+            timeout={1000}
+            classNames="modal"
+            unmountOnExit
+          >
+            <Modal className="absolute top-0 bg-gray-800 bg-opacity-50 h-screen w-full py-24" />
+          </CSSTransition>
         </UserContext.Provider>
       </ModalContext.Provider>
     </div>
