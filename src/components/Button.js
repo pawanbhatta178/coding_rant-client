@@ -2,14 +2,17 @@ const baseButtonStyle = "flex ";
 
 export const ButtonType = {
   primary:
-    "secondary-bg secondary-text font-semibold rounded shadow-2xl border bg-purple-600 hover:bg-purple-700",
-  secondary: `${baseButtonStyle} primary-bg primary-text hover  border border-purple-300 hover:border-purple-800 font-semibold shadow rounded`,
+    "secondary-bg secondary-text font-semibold rounded shadow-2xl border bg-gradient-to-r from-purple-500 to-purple-900 hover:bg-purple-700 focus:outline-none ",
+  secondary: `${baseButtonStyle} primary-bg primary-text hover  border border-purple-300 hover:border-purple-800 font-semibold shadow rounded focus:outline-none `,
   basic:
     "bg-transparent opacity-70 hover:opacity-100 text-gray-800 focus:outline-none ",
+  basicPurple:
+    "bg-transparent opacity-70  text-purple-800 hover:text-purple-900 focus:outline-none ",
   neutral:
-    "bg-gray-600 text-gray-200 hover font-semibold border rounded shadow",
-  delete: "bg-red-500 hover text-white font-semibold rounded shadow",
-  deleteOutline: `${baseButtonStyle} bg-white hover hover:border-red-500 text-red-500 font-semibold rounded border border-red-300 shadow`,
+    "bg-gray-600 text-gray-200 hover font-semibold border rounded shadow focus:outline-none ",
+  delete:
+    "bg-red-500 hover text-white font-semibold rounded shadow focus:outline-none ",
+  deleteOutline: `${baseButtonStyle} bg-white hover hover:border-red-500 text-red-500 font-semibold rounded border border-red-300 shadow focus:outline-none `,
 };
 
 export const ButtonSize = {

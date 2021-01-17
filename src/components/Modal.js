@@ -27,7 +27,7 @@ const Modal = (props) => {
         classNames="modal"
         timeout={2000}
       >
-        <div className="bg-white bg-opacity-100 max-w-xs mx-auto relative px-8 py-4 rounded-lg ">
+        <div className="bg-white bg-opacity-100 max-w-xs mx-auto relative px-8 py-4 rounded-lg border-l-4  border-purple-700 ">
           <button
             className="absolute top-1 right-2 font-semibold focus:outline-none hover"
             onClick={() => setModal(false)}
