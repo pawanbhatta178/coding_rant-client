@@ -1,15 +1,41 @@
-.modal-enter {
-  transform: scale(0);
+.overlay-enter {
+  opacity: 0;
 }
+.overlay-enter-active {
+  opacity: 1;
+  transition: all ease 500ms;
+}
+
+.overlay-exit {
+  opacity: 1;
+}
+
+.overlay-exit-active {
+  opacity: 0;
+  transition: all ease 500ms;
+}
+
+.modal-enter {
+  transform: translateX(50%), translateY(-50%), scale(0, 0);
+  opacity: 0;
+}
+
 .modal-enter-active {
-  transform: scale(1);
-  transition: all 1000ms;
+  transform: translateX(0%);
+  transform: scale(1, 1);
+  opacity: 1;
+  transition: all ease-out 2s;
 }
 
 .modal-exit {
+  transform: translateX(0%);
+  transform: scale(1, 1);
+  opacity: 1;
 }
 
 .modal-exit-active {
-  transform: scale(0);
-  transition: all 1000ms;
+  transform: translateX(50%);
+  transform: scale(0, 0);
+  opacity: 0;
+  transition: all ease-out 2s;
 }

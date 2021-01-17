@@ -2,7 +2,7 @@ const baseButtonStyle = "flex ";
 
 export const ButtonType = {
   primary:
-    "secondary-bg secondary-text hover font-semibold rounded shadow border border-purple-500",
+    "secondary-bg secondary-text font-semibold rounded shadow-2xl border bg-purple-600 hover:bg-purple-700",
   secondary: `${baseButtonStyle} primary-bg primary-text hover  border border-purple-300 hover:border-purple-800 font-semibold shadow rounded`,
   basic:
     "bg-transparent opacity-70 hover:opacity-100 text-gray-800 focus:outline-none ",
@@ -16,7 +16,7 @@ export const ButtonSize = {
   xs: "text-xs py-2",
   sm: "py-2 px-6 text-xs",
   lg: "py-2 px-10 text-base",
-  xl: "py-3 px-8 text-lg",
+  xl: "py-3 px-8 text-base",
 };
 
 export const disabledStyle = "opacity-50 hover:opacity-50 cursor-not-allowed";
@@ -27,7 +27,11 @@ const Button = ({ size, type, children, disabled, ...props }) => {
   return (
     <button
       {...props}
-      className={disabled ? `${classNames} ${disabledStyle}` : classNames}
+      className={
+        disabled
+          ? `${classNames} ${props.className} ${disabledStyle}`
+          : `${classNames} ${props.className}`
+      }
     >
       {children}
     </button>

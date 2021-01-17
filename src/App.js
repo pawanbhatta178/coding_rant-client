@@ -43,9 +43,9 @@ function App() {
           </div>
 
           <CSSTransition
-            in={showModal}
-            timeout={1000}
-            classNames="modal"
+            in={typeof showModal === "string"}
+            classNames="overlay"
+            timeout={500}
             unmountOnExit
           >
             <Modal className="absolute top-0 bg-gray-800 bg-opacity-50 h-screen w-full py-24" />
