@@ -75,7 +75,6 @@ const LeftSplit = ({ children }) => {
   const { leftWidth, setLeftWidth } = React.useContext(splitPaneContext);
   React.useEffect(() => {
     if (!leftWidth) {
-      console.log(leftRef.current.clientWidth);
       setLeftWidth(leftRef.current.clientWidth);
       leftRef.current.style.flex = "none";
       return;

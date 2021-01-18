@@ -10,7 +10,6 @@ const QuestionContainer = (props) => {
   React.useEffect(() => {
     (async () => {
       const questionDetails = await getQuestion(activeQuestionId);
-      console.log(questionDetails);
       setQuestion(questionDetails);
     })();
   }, [activeQuestionId]);
