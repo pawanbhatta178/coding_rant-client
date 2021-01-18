@@ -1,12 +1,59 @@
-import './Question.css';
-import React from 'react'
+import React from "react";
+import CardInput from "./CardInput";
 
-const Question = () => {
-    return (
+const Question = ({ questionDetails }) => {
+  return (
+    <>
+      <div className="text-sm text-gray-500 flex justify-between justify-items-center">
+        <div> {questionDetails.difficulty}</div>
         <div>
-            Question
+          Successful Submissions: {questionDetails.successful_submissions}
         </div>
-    )
-}
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            stroke="current"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
+            />
+          </svg>{" "}
+          {questionDetails.up_votes}
+        </div>
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            stroke="current"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.096c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5"
+            />
+          </svg>{" "}
+          {questionDetails.down_votes}
+        </div>
+      </div>
+      <div className="font-semibold text-xl pt-2 pb-2">
+        {questionDetails.id}. {questionDetails.title}
+      </div>
+      <div className="text-gray-700"> {questionDetails.question_prompt}</div>
+      <CardInput title="Sample Input" className="mt-4">
+        {questionDetails.sample_input}
+      </CardInput>
+      <CardInput title="Sample Output" className="mt-4">
+        {questionDetails.sample_output}
+      </CardInput>
+    </>
+  );
+};
 
-export default Question
+export default Question;

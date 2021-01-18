@@ -1,0 +1,15 @@
+[
+{
+    "id":"1",
+    "category":"database",
+    "successful_submissions":"1200",
+    "up_votes":"1212",
+    "down_votes":"3434",
+    "question_prompt":"A Fibonacci sequence is a series of numbers in which each number (Fibonacci term) is the sum of the two preceding numbers.The first terms in this sequence are: 1, 1, 2, 3, 5, 8, 13, …. In addition, the zeroth Fibonacci term is 0. Write a function that returns the Nth term in this sequence.",
+    "sample_input":"6",
+    "sample_output":"4",
+    "difficulty":"Easy",
+    "title":"Fibonacci Series"
+}
+
+]

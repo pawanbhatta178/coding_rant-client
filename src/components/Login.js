@@ -8,8 +8,8 @@ const Login = () => {
   return (
     <div className="flex flex-col">
       <div className="font-semibold text-gray-600 text-2xl mx-auto">Login</div>
-      <Input placeholder="username or email" name="login" type="text" />
-      <Input placeholder="password" name="password" type="password" />
+      <Input placeholder="Username or Email" name="login" type="text" />
+      <Input placeholder="Password" name="password" type="password" />
       <Button size="lg" type="primary" className="mt-4">
         {" "}
         Sign In

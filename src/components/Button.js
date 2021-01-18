@@ -9,7 +9,7 @@ export const ButtonType = {
   basicPurple:
     "bg-transparent opacity-70  text-purple-800 hover:text-purple-900 focus:outline-none ",
   neutral:
-    "bg-gray-600 text-gray-200 hover font-semibold border rounded shadow focus:outline-none ",
+    "bg-gray-700 hover:bg-gray-800 text-gray-200  font-light border rounded shadow focus:outline-none ",
   delete:
     "bg-red-500 hover text-white font-semibold rounded shadow focus:outline-none ",
   deleteOutline: `${baseButtonStyle} bg-white hover hover:border-red-500 text-red-500 font-semibold rounded border border-red-300 shadow focus:outline-none `,

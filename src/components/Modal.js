@@ -19,6 +19,10 @@ const Modal = (props) => {
     }
   };
 
+  const preventPropagation = (e) => {
+    e.stopPropagation();
+  };
+
   return (
     <div {...props}>
       <CSSTransition
@@ -27,7 +31,10 @@ const Modal = (props) => {
         classNames="modal"
         timeout={2000}
       >
-        <div className="bg-white bg-opacity-100 max-w-xs mx-auto relative px-8 py-4 rounded-lg border-l-4  border-purple-700 ">
+        <div
+          className="bg-gray-100 bg-opacity-100 max-w-xs mx-auto relative px-8 py-4 rounded-md border-l-2  border-purple-700 shadow-inner"
+          onClick={(e) => preventPropagation(e)}
+        >
           <button
             className="absolute top-1 right-2 font-semibold focus:outline-none hover"
             onClick={() => setModal(false)}
