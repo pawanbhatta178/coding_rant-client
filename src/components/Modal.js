@@ -2,12 +2,16 @@ import React, { useContext } from "react";
 import { CSSTransition } from "react-transition-group";
 
 import "./Modal.css";
-import ModalContext from "../ModalContext";
 import Login from "./Login";
 import Register from "./Register";
+import CardError from "./CardError";
+import ModalContext from "../ModalContext";
+import ErrorContext from "../ErrorContext";
 
 const Modal = (props) => {
   const { showModal, setModal } = useContext(ModalContext);
+  const { error, errorDispatch } = useContext(ErrorContext);
+
   const renderComponent = (modelName) => {
     switch (modelName) {
       case "Login":
@@ -23,6 +27,12 @@ const Modal = (props) => {
     e.stopPropagation();
   };
 
+  React.useEffect(() => {
+    return () => {
+      errorDispatch({ type: "DISMISS_MODAL_ERROR" });
+    };
+  }, [errorDispatch]);
+
   return (
     <div {...props}>
       <CSSTransition
@@ -32,7 +42,7 @@ const Modal = (props) => {
         timeout={2000}
       >
         <div
-          className="bg-gray-100 bg-opacity-100 max-w-xs mx-auto relative px-8 py-4 rounded-md border-l-2  border-purple-700 shadow-inner"
+          className="bg-gray-100 bg-opacity-100 max-w-xs mx-auto relative px-8 py-4 rounded-md border-t-4  border-purple-700 shadow-inner"
           onClick={(e) => preventPropagation(e)}
         >
           <button
@@ -41,6 +51,13 @@ const Modal = (props) => {
           >
             &times;
           </button>
+
+          {error?.modalError && (
+            <CardError
+              msg={error.modalError.msg}
+              type={error.modalError.type}
+            />
+          )}
           {renderComponent(showModal)}
         </div>
       </CSSTransition>

@@ -1,16 +1,43 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import Button from "./Button";
 import Input from "./Input";
 import ModalContext from "../ModalContext";
+import UserContext from "../UserContext";
 
 const Login = () => {
-  const { setModal } = React.useContext(ModalContext);
+  const { user, userDispatch } = useContext(UserContext);
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const { setModal } = useContext(ModalContext);
+
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col my-4">
       <div className="font-semibold text-gray-600 text-2xl mx-auto">Login</div>
-      <Input placeholder="Username or Email" name="login" type="text" />
-      <Input placeholder="Password" name="password" type="password" />
-      <Button size="lg" type="primary" className="mt-4">
+      <Input
+        placeholder="Username or Email"
+        name="login"
+        type="text"
+        value={login}
+        onChange={(e) => setLogin(e.target.value)}
+      />
+      <Input
+        placeholder="Password"
+        name="password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <Button
+        size="lg"
+        type="primary"
+        className="mt-4"
+        onClick={() =>
+          userDispatch({
+            type: "LOGIN",
+            payload: { login: login, password: password },
+          })
+        }
+      >
         {" "}
         Sign In
       </Button>

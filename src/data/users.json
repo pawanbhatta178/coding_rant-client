@@ -1,0 +1,18 @@
+[
+    {
+      "username":"pawan",
+      "password":"pawan",
+      "email":"pawanbhatta178@gmail.com",
+      "preferred_lang":"js",
+      "upvoted_questions":["1"],
+      "downvoted_questions":[]
+    },
+    {
+         "username":"prabhat",
+         "password":"prabhat",
+         "email":"prabhat@gmail.com",
+         "preferred_lang":"py",
+         "upvoted_questions":[],
+         "downvoted_questions":["1"]
+    }
+]

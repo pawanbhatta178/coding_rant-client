@@ -6,7 +6,7 @@ import ModalContext from "../ModalContext";
 const Register = () => {
   const { setModal } = React.useContext(ModalContext);
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col my-4">
       <div className="font-semibold text-gray-600 text-2xl mx-auto">
         Register
       </div>

@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import Button from "./Button";
-import ModalContext from "../ModalContext";
 
-const NavItem = ({ type }) => {
-  const { setModal } = useContext(ModalContext);
+const NavItem = ({ type, onClick }) => {
   return (
     <div className="px-2">
-      <Button size="xs" type="basic" onClick={() => setModal(type)}>
+      <Button size="xs" type="basic" onClick={onClick}>
         {type}
       </Button>
     </div>

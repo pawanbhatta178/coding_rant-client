@@ -38,7 +38,6 @@ const SplitPane = ({ minLeftWidth, minRightWidth, children, ...props }) => {
 
   React.useEffect(() => {
     if (!totalWidth) {
-      console.log(splitPaneRef.current.clientWidth);
       setTotalWidth(splitPaneRef.current.clientWidth);
       return;
     }
