@@ -15,7 +15,7 @@ const Register = () => {
   const [confirmPwd, setConfirmPwd] = useState("");
   const [confirmPwdError, setConfirmPwdError] = useState(null);
   const [username, setUsername] = useState("");
-  const [usernameError, setUsernameError] = useState(null);
+  const [usernameError] = useState(null);
 
   useEffect(() => {
     if (confirmPwd.length === 0 || password.length === 0) {
