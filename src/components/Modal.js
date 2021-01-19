@@ -8,20 +8,20 @@ import CardError from "./CardError";
 import ModalContext from "../ModalContext";
 import ErrorContext from "../ErrorContext";
 
-const Modal = (props) => {
-  const { showModal, setModal } = useContext(ModalContext);
-  const { error, errorDispatch } = useContext(ErrorContext);
+const renderComponent = (modelName) => {
+  switch (modelName) {
+    case "Login":
+      return <Login />;
+    case "Register":
+      return <Register />;
+    default:
+      return false;
+  }
+};
 
-  const renderComponent = (modelName) => {
-    switch (modelName) {
-      case "Login":
-        return <Login />;
-      case "Register":
-        return <Register />;
-      default:
-        return false;
-    }
-  };
+const Modal = (props) => {
+  const { modal, modalDispatch } = useContext(ModalContext);
+  const { error, errorDispatch } = useContext(ErrorContext);
 
   const preventPropagation = (e) => {
     e.stopPropagation();
@@ -36,7 +36,7 @@ const Modal = (props) => {
   return (
     <div {...props}>
       <CSSTransition
-        in={typeof showModal === "string"}
+        in={typeof modal === "string"}
         unmountOnExit
         classNames="modal"
         timeout={2000}
@@ -47,7 +47,7 @@ const Modal = (props) => {
         >
           <button
             className="absolute top-1 right-2 font-semibold focus:outline-none hover"
-            onClick={() => setModal(false)}
+            onClick={() => modalDispatch({ type: "CLOSE_MODAL" })}
           >
             &times;
           </button>
@@ -58,7 +58,8 @@ const Modal = (props) => {
               type={error.modalError.type}
             />
           )}
-          {renderComponent(showModal)}
+          {console.log(modal)}
+          {renderComponent(modal)}
         </div>
       </CSSTransition>
     </div>

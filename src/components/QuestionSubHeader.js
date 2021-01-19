@@ -7,7 +7,7 @@ import ErrorContext from "../ErrorContext";
 const QuestionSubHeader = ({ questionDetails }) => {
   const { user, userDispatch } = useContext(UserContext);
   const { errorDispatch } = useContext(ErrorContext);
-  const { setModal } = useContext(ModalContext);
+  const { modal, modalDispatch } = useContext(ModalContext);
   return (
     <div className="text-sm text-gray-500 flex justify-between justify-items-center">
       <div> {questionDetails.difficulty}</div>
@@ -34,7 +34,7 @@ const QuestionSubHeader = ({ questionDetails }) => {
                   type: "error",
                 },
               });
-              setModal("Login");
+              modalDispatch({ type: "SHOW_LOGIN" });
             }}
           />
         )}
@@ -60,7 +60,7 @@ const QuestionSubHeader = ({ questionDetails }) => {
                   type: "error",
                 },
               });
-              setModal("Login");
+              modalDispatch({ type: "SHOW_LOGIN" });
             }}
           />
         )}

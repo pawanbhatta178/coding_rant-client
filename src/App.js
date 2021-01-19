@@ -6,73 +6,20 @@ import NavBar from "./components/NavBar";
 import SplitPane from "./components/SplitPane";
 import EditorContainer from "./components/EditorContainer";
 import QuestionContainer from "./components/QuestionContainer";
-import { getUserDetails, logUserIn } from "./api/user";
+import { getUserDetails } from "./api/user";
 
 import UserContext from "./UserContext";
 import ModalContext from "./ModalContext";
 import QuestionContext from "./QuestionContext";
 import ErrorContext from "./ErrorContext";
-
-const userReducer = (state, action) => {
-  switch (action.type) {
-    case "USER_LOADED":
-      return action.payload;
-    case "LOGIN":
-      return logUserIn(action.payload.login, action.payload.password);
-    case "LOGOUT":
-      return null;
-    case "UPVOTE":
-      if (state.upvoted_questions.includes(action.payload)) {
-        return {
-          ...state,
-          upvoted_questions: state.upvoted_questions.filter(
-            (questionId) => questionId !== action.payload
-          ),
-        };
-      }
-      return {
-        ...state,
-        downvoted_questions: state.downvoted_questions.filter(
-          (questionId) => questionId !== action.payload
-        ),
-        upvoted_questions: [action.payload, ...state.upvoted_questions],
-      };
-    case "DOWNVOTE":
-      if (state.downvoted_questions.includes(action.payload)) {
-        return {
-          ...state,
-          downvoted_questions: state.downvoted_questions.filter(
-            (questionId) => questionId !== action.payload
-          ),
-        };
-      }
-      return {
-        ...state,
-        upvoted_questions: state.upvoted_questions.filter(
-          (questionId) => questionId !== action.payload
-        ),
-        downvoted_questions: [action.payload, ...state.downvoted_questions],
-      };
-    default:
-      return state;
-  }
-};
-
-const errorReducer = (state, action) => {
-  switch (action.type) {
-    case "SET_MODAL_ERROR":
-      return { ...state, modalError: action.payload };
-    case "DISMISS_MODAL_ERROR":
-      return { ...state, modalError: null };
-    default:
-      return state;
-  }
-};
+import userReducer from "./reducers/userReducer";
+import errorReducer from "./reducers/errorReducer";
+import modalReducer from "./reducers/modalReducer";
 
 function App() {
-  const [showModal, setShowModal] = React.useState(false);
   const [userState, userDispatch] = React.useReducer(userReducer, null);
   const [errorState, errorDispatch] = React.useReducer(errorReducer, null);
+  const [modalState, modalDispatch] = React.useReducer(modalReducer, null);
 
   React.useEffect(() => {
     (async () => {
@@ -82,25 +29,12 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    setModal(false);
+    modalDispatch({ type: "CLOSE_MODAL" });
   }, [userState]);
-
-  const setModal = (modelName) => {
-    switch (modelName) {
-      case "Login":
-        setShowModal("Login");
-        break;
-      case "Register":
-        setShowModal("Register");
-        break;
-      default:
-        setShowModal(false);
-    }
-  };
 
   return (
     <div className="relative h-screen overflow-y-hidden">
-      <ModalContext.Provider value={{ showModal, setModal }}>
+      <ModalContext.Provider value={{ modal: modalState, modalDispatch }}>
         <UserContext.Provider value={{ user: userState, userDispatch }}>
           <QuestionContext.Provider value={{ activeQuestionId: "1" }}>
             <ErrorContext.Provider value={{ error: errorState, errorDispatch }}>
@@ -117,14 +51,14 @@ function App() {
               </div>
 
               <CSSTransition
-                in={typeof showModal === "string"}
+                in={typeof modalState === "string"}
                 classNames="overlay"
                 timeout={500}
                 unmountOnExit
               >
                 <Modal
                   className="absolute top-0 bg-gray-800 bg-opacity-50 h-screen w-full py-24"
-                  onClick={() => setModal(false)}
+                  onClick={() => modalDispatch({ type: "CLOSE_MODAL" })}
                 />
               </CSSTransition>
             </ErrorContext.Provider>

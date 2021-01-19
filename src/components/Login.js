@@ -5,10 +5,10 @@ import ModalContext from "../ModalContext";
 import UserContext from "../UserContext";
 
 const Login = () => {
-  const { user, userDispatch } = useContext(UserContext);
+  const { userDispatch } = useContext(UserContext);
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  const { setModal } = useContext(ModalContext);
+  const { modalDispatch } = useContext(ModalContext);
 
   return (
     <div className="flex flex-col my-4">
@@ -48,7 +48,7 @@ const Login = () => {
         <Button
           size="xs"
           type="basicPurple"
-          onClick={() => setModal("Register")}
+          onClick={() => modalDispatch({ type: "SHOW_REGISTER" })}
         >
           Sign Up
         </Button>

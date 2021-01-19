@@ -5,7 +5,7 @@ import ModalContext from "../ModalContext";
 
 const NavRightMenu = () => {
   const { user, userDispatch } = useContext(UserContext);
-  const { setModal } = useContext(ModalContext);
+  const { modal, modalDispatch } = useContext(ModalContext);
 
   return (
     <div className="flex justify-end w-1/2">
@@ -16,8 +16,14 @@ const NavRightMenu = () => {
         />
       ) : (
         <>
-          <NavItem type="Login" onClick={() => setModal("Login")} />
-          <NavItem type="Register" onClick={() => setModal("Register")} />
+          <NavItem
+            type="Login"
+            onClick={() => modalDispatch({ type: "SHOW_LOGIN" })}
+          />
+          <NavItem
+            type="Register"
+            onClick={() => modalDispatch({ type: "SHOW_REGISTER" })}
+          />
         </>
       )}
     </div>
