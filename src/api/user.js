@@ -6,10 +6,10 @@ const logUserIn = (login, password) => {
     return login === user.username || login === user.email;
   });
   if (!user) {
-    return null;
+    return { error: "Incorrect username/password" };
   }
   if (user.password !== password) {
-    return null;
+    return { error: "Incorrect username/password" };
   }
   return user;
 };

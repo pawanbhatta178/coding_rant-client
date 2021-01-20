@@ -29,7 +29,18 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    modalDispatch({ type: "CLOSE_MODAL" });
+    if (!userState) {
+      return;
+    }
+    if (userState?.error) {
+      errorDispatch({
+        type: "SET_LOGIN_ERROR",
+        payload: { error: userState.error },
+      });
+      userDispatch({ type: "CLEAR" });
+    } else {
+      modalDispatch({ type: "CLOSE_MODAL" });
+    }
   }, [userState]);
 
   return (

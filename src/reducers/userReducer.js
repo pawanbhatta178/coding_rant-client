@@ -6,7 +6,8 @@ const userReducer = (state, action) => {
       return action.payload;
     case "LOGIN":
       return logUserIn(action.payload.login, action.payload.password);
-
+    case "CLEAR":
+      return null;
     case "LOGOUT":
       return null;
     case "UPVOTE":
