@@ -6,9 +6,6 @@
   --nav-height: 2.5rem;
   --code-editor-height: 88%;
 }
-::selection {
-  background: none;
-}
 
 .primary-bg {
   @apply bg-purple-100;
@@ -62,7 +59,18 @@
   height: 2.5rem;
 }
 
-.logo-style::first-letter,
-.logo-first-letter {
-  @apply text-red-800 font-semibold text-2xl;
+.light-text {
+  @apply text-gray-500;
+}
+
+.dark-text {
+  @apply text-gray-800;
+}
+
+.medium-text {
+  @apply text-gray-600;
+}
+
+.right-minus-2 {
+  right: -2em;
 }

@@ -7,4 +7,5 @@ const getQuestion = async (id) => {
   }
   return returnVal;
 };
+
 module.exports = { getQuestion };

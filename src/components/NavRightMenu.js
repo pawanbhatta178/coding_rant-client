@@ -4,16 +4,19 @@ import UserContext from "../UserContext";
 import ModalContext from "../ModalContext";
 
 const NavRightMenu = () => {
-  const { user, userDispatch } = useContext(UserContext);
-  const { modal, modalDispatch } = useContext(ModalContext);
-
+  const { user } = useContext(UserContext);
+  const { modalDispatch } = useContext(ModalContext);
   return (
     <div className="flex justify-end w-1/2">
       {user ? (
-        <NavItem
-          type="Logout"
-          onClick={() => userDispatch({ type: "LOGOUT" })}
-        />
+        <>
+          <NavItem
+            type="profile"
+            subItems={{
+              items: ["Profile", "Logout"],
+            }}
+          />
+        </>
       ) : (
         <>
           <NavItem

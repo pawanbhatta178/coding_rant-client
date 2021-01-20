@@ -4,6 +4,8 @@ import { CSSTransition } from "react-transition-group";
 import "./Modal.css";
 import Login from "./Login";
 import Register from "./Register";
+import Profile from "./Profile";
+
 import CardError from "./CardError";
 import ModalContext from "../ModalContext";
 import ErrorContext from "../ErrorContext";
@@ -14,6 +16,8 @@ const renderComponent = (modelName) => {
       return <Login />;
     case "Register":
       return <Register />;
+    case "Profile":
+      return <Profile />;
     default:
       return false;
   }
@@ -58,7 +62,6 @@ const Modal = (props) => {
               type={error.modalError.type}
             />
           )}
-          {console.log(modal)}
           {renderComponent(modal)}
         </div>
       </CSSTransition>

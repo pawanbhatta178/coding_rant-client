@@ -6,5 +6,4 @@ const validateEmail = (emailAddress) => {
     return false;
   }
 };
-console.log(validateEmail("asasas@gmail.com"));
 module.exports = validateEmail;

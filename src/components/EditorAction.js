@@ -5,7 +5,7 @@ import ModalContext from "../ModalContext";
 
 const EditorAction = ({ ...props }) => {
   const { user } = React.useContext(UserContext);
-  const { setModal } = React.useContext(ModalContext);
+  const { modalDispatch } = React.useContext(ModalContext);
   return (
     <div {...props}>
       <Button
@@ -13,7 +13,7 @@ const EditorAction = ({ ...props }) => {
         type="neutral"
         onClick={() => {
           if (!user) {
-            setModal("Login");
+            modalDispatch({ type: "SHOW_LOGIN" });
           }
           // console.log("COMPILING");
         }}

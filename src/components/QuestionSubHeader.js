@@ -3,18 +3,16 @@ import Icon from "./Icon";
 import UserContext from "../UserContext";
 import ModalContext from "../ModalContext";
 import ErrorContext from "../ErrorContext";
+import QuestionTypeCard from "./QuestionTypeCard";
 
 const QuestionSubHeader = ({ questionDetails }) => {
   const { user, userDispatch } = useContext(UserContext);
   const { errorDispatch } = useContext(ErrorContext);
-  const { modal, modalDispatch } = useContext(ModalContext);
+  const { modalDispatch } = useContext(ModalContext);
   return (
-    <div className="text-sm text-gray-500 flex justify-between justify-items-center">
-      <div> {questionDetails.difficulty}</div>
-      <div>
-        Successful Submissions: {questionDetails.successful_submissions}
-      </div>
-      <div>
+    <div className="text-xs bg-gray-100 rounded-md text-gray-800 flex justify-between items-center px-2 py-2 ">
+      <QuestionTypeCard difficulty={questionDetails?.difficulty} />
+      <div className="flex">
         {user?.upvoted_questions ? (
           <Icon
             type="upVote"
@@ -38,9 +36,9 @@ const QuestionSubHeader = ({ questionDetails }) => {
             }}
           />
         )}
-        {questionDetails.up_votes}
+        <span className="light-text">{questionDetails.up_votes}</span>
       </div>
-      <div>
+      <div className="flex">
         {user?.downvoted_questions ? (
           <Icon
             type="downVote"
@@ -64,7 +62,13 @@ const QuestionSubHeader = ({ questionDetails }) => {
             }}
           />
         )}
-        {questionDetails.down_votes}
+        <span className="light-text">{questionDetails.down_votes}</span>
+      </div>
+      <div>
+        Submissions:{" "}
+        <span className="light-text">
+          {questionDetails.successful_submissions}+
+        </span>
       </div>
     </div>
   );

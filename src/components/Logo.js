@@ -2,10 +2,9 @@ import React from "react";
 
 const Logo = () => {
   return (
-    <div className="font-mono font-lighter tracking-tight logo-style">
+    <div className="font-mono font-lighter tracking-tight ">
       <span>Coding</span>
-      <span className="logo-first-letter">r</span>
-      <span>ant.</span>
+      <span>rant.</span>
     </div>
   );
 };
