@@ -57,7 +57,7 @@ function App() {
                   minRightWidth="120px"
                 >
                   <EditorContainer className="h-full flex flex-col border " />
-                  <QuestionContainer className="h-full flex flex-col overflow-auto mx-6 pt-2 pb-12 text-sm" />
+                  <QuestionContainer className="h-full flex flex-col overflow-auto  pb-12 text-sm" />
                 </SplitPane>
               </div>
 
