@@ -74,3 +74,7 @@
 .right-minus-2 {
   right: -2em;
 }
+
+.min-h-12 {
+  min-height: 3rem;
+}

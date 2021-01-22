@@ -5,7 +5,8 @@ import { ReactComponent as Error } from "../icons/error.svg";
 import { IconContext } from "react-icons";
 import { FaUserCircle } from "react-icons/fa";
 import { BiLogOut, BiUser } from "react-icons/bi";
-
+import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
+import { CgMathEqual } from "react-icons/cg";
 const getIconComponent = ({ type, filled }) => {
   switch (type) {
     case "upVote":
@@ -30,6 +31,24 @@ const getIconComponent = ({ type, filled }) => {
       return (
         <IconContext.Provider value={{ color: "current" }}>
           <BiLogOut />
+        </IconContext.Provider>
+      );
+    case "Increment":
+      return (
+        <IconContext.Provider value={{ className: "text-green-600 h-2.5" }}>
+          <GoTriangleUp />
+        </IconContext.Provider>
+      );
+    case "Decrement":
+      return (
+        <IconContext.Provider value={{ className: "text-red-600 h-2.5" }}>
+          <GoTriangleDown />
+        </IconContext.Provider>
+      );
+    case "Equal":
+      return (
+        <IconContext.Provider value={{ className: "text-gray-600 h-2.5" }}>
+          <CgMathEqual />
         </IconContext.Provider>
       );
     default:

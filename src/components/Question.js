@@ -14,7 +14,7 @@ const Question = ({ questionDetails }) => {
   return (
     <>
       <QuestionNavBar
-        className="bg-gray-200 h-12 flex justify-start"
+        className="bg-gray-200 h-12 min-h-12 flex justify-start"
         challengeState={challengeState}
         challengeDispatch={challengeDispatch}
       />
