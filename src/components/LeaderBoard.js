@@ -11,7 +11,6 @@ const LeaderBoard = () => {
   const { user } = React.useContext(UserContext);
 
   React.useEffect(() => {
-    console.log(user);
     const rankingData = [
       {
         rank: "1",
@@ -148,9 +147,10 @@ const LeaderBoard = () => {
       },
     ];
     //finding user's record
+    const username = user?.username;
     setData(
       rankingData.map((challenger) => {
-        if (challenger.username !== user.user) {
+        if (challenger.username !== username) {
           return challenger;
         } else {
           return { ...challenger, myRecord: true };
@@ -172,7 +172,6 @@ const LeaderBoard = () => {
 
           {data.map((challenger, i) => (
             <React.Fragment key={i}>
-              {console.log(data)}
               <div
                 className={`flex items-center ${
                   challenger?.myRecord && "my-row"

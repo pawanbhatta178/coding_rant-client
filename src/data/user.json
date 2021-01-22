@@ -1,6 +1,6 @@
 {
     "id":"123456",
-    "user":"Pawan",
+    "username":"Pawan",
     "preferred_lang":"js",
     "upvoted_questions":["1"],
     "downvoted_questions":[]

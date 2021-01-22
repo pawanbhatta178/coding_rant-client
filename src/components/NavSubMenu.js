@@ -28,7 +28,7 @@ const NavSubMenu = ({ items, toggleSubMenu }) => {
         <div
           key={i}
           onClick={() => dispatchActions(item)}
-          className="px-2 py-2 text-xs text-gray-600 hover:bg-gray-200 hover:text-gray-800 overflow-hidden flex gap-x-3"
+          className="px-2 py-2 text-xs text-gray-600 hover:bg-gray-200 hover:text-gray-800 overflow-hidden flex gap-x-3 "
         >
           <Icon type={item} />
           {item}

@@ -19,7 +19,7 @@ const NavItem = ({ type, onClick, subItems }) => {
       </Button>
     </div>
   ) : (
-    <div className="relative">
+    <div className="relative cursor-pointer">
       <div className="text-gray-600 hover:text-gray-800">
         <Icon type="navProfile" onClick={() => toggleSubMenu()} />
       </div>
