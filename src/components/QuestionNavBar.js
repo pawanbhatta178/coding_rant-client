@@ -4,7 +4,6 @@ import QuestionNavItem from "./QuestionNavItem";
 const QuestionNavBar = ({ challengeState, challengeDispatch, ...props }) => {
   return (
     <div {...props}>
-      {console.log(challengeState)}
       <QuestionNavItem
         active={challengeState === "Description"}
         name={"Description"}
