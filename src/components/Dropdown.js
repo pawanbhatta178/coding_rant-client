@@ -13,7 +13,7 @@ const Dropdown = () => {
 
   return (
     <>
-      <div className="bg-white relative text-xs font-semibold">
+      <div className="bg-white relative text-xs font-light text-gray-800">
         <div
           className="inline-flex space-x-2 py-2 px-2 border cursor-pointer"
           onClick={() => {

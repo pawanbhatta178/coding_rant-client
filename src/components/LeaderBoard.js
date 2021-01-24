@@ -162,7 +162,7 @@ const LeaderBoard = () => {
   return (
     data && (
       <>
-        <div className="grid-leaderboard border m-4 rounded shadow-lg overflow-y-auto">
+        <div className="grid-leaderboard  m-4 rounded overflow-y-auto">
           <div className="grid-title text-gray-500 pl-1"></div>
           <div className="grid-title text-gray-500 pl-1"></div>
           <div className="grid-title text-gray-500 "></div>

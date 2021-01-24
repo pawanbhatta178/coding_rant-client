@@ -8,11 +8,20 @@
       "downvoted_questions":[]
     },
     {
-         "username":"prabhat",
+         "username":"Prabhat",
          "password":"prabhat",
          "email":"prabhat@gmail.com",
          "preferred_lang":"py",
          "upvoted_questions":[],
          "downvoted_questions":["1"]
+    },
+    {  
+      "username":"Usha",
+      "password":"usha",
+      "email":"usha@gmail.com",
+      "preferred_lang":"py",
+      "upvoted_questions":[],
+      "downvoted_questions":["1"]
+
     }
 ]
