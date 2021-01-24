@@ -4,6 +4,7 @@ import Flags from "./Flags";
 import Icon from "./Icon";
 import "./LeaderBoard.css";
 import UserContext from "../UserContext";
+import Loading from "./Loading";
 
 const LeaderBoard = () => {
   const { activeQuestionId } = React.useContext(QuestionContext);
@@ -148,77 +149,79 @@ const LeaderBoard = () => {
     ];
     //finding user's record
     const username = user?.username;
-    setData(
-      rankingData.map((challenger) => {
-        if (challenger.username !== username) {
-          return challenger;
-        } else {
-          return { ...challenger, myRecord: true };
-        }
-      })
-    );
+    setTimeout(() => {
+      setData(
+        rankingData.map((challenger) => {
+          if (challenger.username !== username) {
+            return challenger;
+          } else {
+            return { ...challenger, myRecord: true };
+          }
+        })
+      );
+    }, 5000);
   }, [activeQuestionId, user]);
 
-  return (
-    data && (
-      <>
-        <div className="grid-leaderboard  m-4 rounded overflow-y-auto">
-          <div className="grid-title text-gray-500 pl-1"></div>
-          <div className="grid-title text-gray-500 pl-1"></div>
-          <div className="grid-title text-gray-500 "></div>
-          <div className="grid-title text-gray-500 "></div>
-          <div className="grid-title text-gray-500 ">Username</div>
-          <div className="grid-title text-gray-500 ">Points</div>
+  return data ? (
+    <>
+      <div className="grid-leaderboard  m-4 rounded overflow-y-auto">
+        <div className="grid-title text-gray-500 pl-1"></div>
+        <div className="grid-title text-gray-500 pl-1"></div>
+        <div className="grid-title text-gray-500 "></div>
+        <div className="grid-title text-gray-500 "></div>
+        <div className="grid-title text-gray-500 ">Username</div>
+        <div className="grid-title text-gray-500 ">Points</div>
 
-          {data.map((challenger, i) => (
-            <React.Fragment key={i}>
-              <div
-                className={`flex items-center ${
-                  challenger?.myRecord && "my-row"
-                }`}
-              >
-                <ChangeInRank
-                  current={parseInt(challenger.rank)}
-                  previous={parseInt(challenger.prevRank)}
-                />
-              </div>
-              <div
-                className={`flex items-center ${
-                  challenger?.myRecord && "my-row"
-                }`}
-              >
-                {challenger.rank}
-              </div>
-              <Flags
-                country={challenger.country}
-                className={`flex items-center ${
-                  challenger?.myRecord && "my-row"
-                }`}
+        {data.map((challenger, i) => (
+          <React.Fragment key={i}>
+            <div
+              className={`flex items-center ${
+                challenger?.myRecord && "my-row"
+              }`}
+            >
+              <ChangeInRank
+                current={parseInt(challenger.rank)}
+                previous={parseInt(challenger.prevRank)}
               />
-              <div
-                className={`flex items-center ${
-                  challenger?.myRecord && "my-row"
-                }`}
-              ></div>
-              <div
-                className={`flex items-center ${
-                  challenger?.myRecord && "my-row"
-                }`}
-              >
-                {challenger.username}
-              </div>
-              <div
-                className={`flex items-center ${
-                  challenger?.myRecord && "my-row"
-                }`}
-              >
-                {challenger.points}
-              </div>
-            </React.Fragment>
-          ))}
-        </div>
-      </>
-    )
+            </div>
+            <div
+              className={`flex items-center ${
+                challenger?.myRecord && "my-row"
+              }`}
+            >
+              {challenger.rank}
+            </div>
+            <Flags
+              country={challenger.country}
+              className={`flex items-center ${
+                challenger?.myRecord && "my-row"
+              }`}
+            />
+            <div
+              className={`flex items-center ${
+                challenger?.myRecord && "my-row"
+              }`}
+            ></div>
+            <div
+              className={`flex items-center ${
+                challenger?.myRecord && "my-row"
+              }`}
+            >
+              {challenger.username}
+            </div>
+            <div
+              className={`flex items-center ${
+                challenger?.myRecord && "my-row"
+              }`}
+            >
+              {challenger.points}
+            </div>
+          </React.Fragment>
+        ))}
+      </div>
+    </>
+  ) : (
+    <Loading text="Loading" />
   );
 };
 

@@ -1,0 +1,21 @@
+.loader {
+  height: 1rem;
+  width: 1rem;
+  background: #7e22ce;
+  border-radius: 0.1rem;
+  animation-name: loader;
+  animation-timing-function: cubic-bezier();
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  transform-origin: center;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(405deg);
+  }
+}
