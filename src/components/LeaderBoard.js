@@ -159,7 +159,7 @@ const LeaderBoard = () => {
           }
         })
       );
-    }, 5000);
+    }, 500);
   }, [activeQuestionId, user]);
 
   return data ? (

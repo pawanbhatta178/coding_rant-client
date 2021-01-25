@@ -4,6 +4,8 @@ const challengeReducer = (state, action) => {
       return "Description";
     case "SHOW_LEADERBOARD":
       return "Leaderboard";
+    case "SHOW_RESULT":
+      return "Result";
     default:
       return state;
   }

@@ -1,7 +1,7 @@
 import React from "react";
 
 const baseStyle =
-  "text-xs font-light flex px-2 justify-center items-center cursor-pointer rounded-sm";
+  "text-xs font-light flex px-2 justify-center items-center cursor-pointer rounded-sm mt-2";
 
 const styles = {
   active: `${baseStyle} bg-white text-gray-800 border-t-2 border-purple-700`,

@@ -10,6 +10,11 @@ const QuestionNavBar = ({ challengeState, challengeDispatch, ...props }) => {
         onClick={() => challengeDispatch({ type: "SHOW_DESCRIPTION" })}
       />
       <QuestionNavItem
+        active={challengeState === "Result"}
+        name={"Result"}
+        onClick={() => challengeDispatch({ type: "SHOW_RESULT" })}
+      />
+      <QuestionNavItem
         active={challengeState === "Leaderboard"}
         name={"Leaderboard"}
         onClick={() => challengeDispatch({ type: "SHOW_LEADERBOARD" })}
