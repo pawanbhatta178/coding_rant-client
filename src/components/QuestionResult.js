@@ -1,7 +1,9 @@
 import React from "react";
 
 const QuestionResult = () => {
-  return <div className="p-2">Result</div>;
+  React.useEffect(() => {}, []);
+
+  return <div className="p-2"></div>;
 };
 
 export default QuestionResult;

@@ -21,7 +21,10 @@ const EditorAction = ({ ...props }) => {
             return modalDispatch({ type: "SHOW_LOGIN" });
           }
           setSubmitting(true);
-          return challengeDispatch({ type: "SHOW_RESULT" });
+          setTimeout(() => {
+            challengeDispatch({ type: "SHOW_RESULT" });
+            setSubmitting(false);
+          }, 2000);
         }}
       >
         <div>Submit</div>

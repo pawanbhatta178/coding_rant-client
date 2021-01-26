@@ -1,3 +1,3 @@
 module.exports = Object.freeze({
-  SERVER_URL: "http://localhost:3000",
+  SERVER_URL: "http://localhost:2000",
 });
