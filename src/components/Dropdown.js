@@ -5,8 +5,8 @@ import EditorContext from "../EditorContext";
 const Dropdown = () => {
   const [showOptions, setShowOptions] = useState(false);
   const { editor, editorDispatch } = useContext(EditorContext);
-  console.log(typeof editor);
   const { languages, chosenLang } = editor;
+
   const resetOnChange = (e) => {
     editorDispatch({ type: "CHANGE_LANG", payload: e.target.id });
     setShowOptions(false);

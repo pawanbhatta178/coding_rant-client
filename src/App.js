@@ -14,6 +14,7 @@ import QuestionContext from "./QuestionContext";
 import ErrorContext from "./ErrorContext";
 import ChallengeContext from "./ChallengeContext";
 import EditorContext from "./EditorContext";
+import SubmissionContext from "./SubmissionContext";
 
 import userReducer from "./reducers/userReducer";
 import errorReducer from "./reducers/errorReducer";
@@ -62,6 +63,7 @@ function App() {
     editorReducer,
     initialState
   );
+  const [submission, setSubmission] = React.useState([]);
 
   React.useEffect(() => {
     (async () => {
@@ -94,36 +96,40 @@ function App() {
               <EditorContext.Provider
                 value={{ editor: editorState, editorDispatch }}
               >
-                <ChallengeContext.Provider
-                  value={{
-                    challenge: challengeState,
-                    challengeDispatch: challengeDispatch,
-                  }}
+                <SubmissionContext.Provider
+                  value={{ submission: submission, setSubmission }}
                 >
-                  <NavBar className="navbar-height" />
-                  <div className="w-screen body-height">
-                    <SplitPane
-                      className="flex border h-full"
-                      minLeftWidth="120px"
-                      minRightWidth="120px"
-                    >
-                      <EditorContainer className="h-full flex flex-col border " />
-                      <QuestionContainer className="h-full flex flex-col overflow-auto  pb-2 text-sm" />
-                    </SplitPane>
-                  </div>
-
-                  <CSSTransition
-                    in={typeof modalState === "string"}
-                    classNames="overlay"
-                    timeout={500}
-                    unmountOnExit
+                  <ChallengeContext.Provider
+                    value={{
+                      challenge: challengeState,
+                      challengeDispatch: challengeDispatch,
+                    }}
                   >
-                    <Modal
-                      className="absolute top-0 bg-gray-800 bg-opacity-50 h-screen w-full py-24"
-                      onClick={() => modalDispatch({ type: "CLOSE_MODAL" })}
-                    />
-                  </CSSTransition>
-                </ChallengeContext.Provider>
+                    <NavBar className="navbar-height" />
+                    <div className="w-screen body-height">
+                      <SplitPane
+                        className="flex border h-full"
+                        minLeftWidth="120px"
+                        minRightWidth="120px"
+                      >
+                        <EditorContainer className="h-full flex flex-col border " />
+                        <QuestionContainer className="h-full flex flex-col overflow-auto  pb-2 text-sm" />
+                      </SplitPane>
+                    </div>
+
+                    <CSSTransition
+                      in={typeof modalState === "string"}
+                      classNames="overlay"
+                      timeout={500}
+                      unmountOnExit
+                    >
+                      <Modal
+                        className="absolute top-0 bg-gray-800 bg-opacity-50 h-screen w-full py-24"
+                        onClick={() => modalDispatch({ type: "CLOSE_MODAL" })}
+                      />
+                    </CSSTransition>
+                  </ChallengeContext.Provider>
+                </SubmissionContext.Provider>
               </EditorContext.Provider>
             </ErrorContext.Provider>
           </QuestionContext.Provider>

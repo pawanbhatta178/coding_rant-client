@@ -33,7 +33,7 @@ const editorReducer = (state, action) => {
       }
       return state;
     case "UPDATE_CODE":
-      return { ...state, source: action.payload };
+      return { ...state, code: action.payload };
     default:
       return state;
   }
