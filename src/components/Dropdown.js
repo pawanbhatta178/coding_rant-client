@@ -4,10 +4,11 @@ import EditorContext from "../EditorContext";
 
 const Dropdown = () => {
   const [showOptions, setShowOptions] = useState(false);
-  const { languages, chosenLang, changeLang } = useContext(EditorContext);
-
+  const { editor, editorDispatch } = useContext(EditorContext);
+  console.log(typeof editor);
+  const { languages, chosenLang } = editor;
   const resetOnChange = (e) => {
-    changeLang(e.target.id);
+    editorDispatch({ type: "CHANGE_LANG", payload: e.target.id });
     setShowOptions(false);
   };
 
@@ -22,7 +23,7 @@ const Dropdown = () => {
         >
           <div className=" flex-1 w-16">
             {
-              languages.filter((language) => language.id === chosenLang)[0]
+              languages?.filter((language) => language.id === chosenLang)[0]
                 ?.name
             }
           </div>
@@ -47,7 +48,9 @@ const Dropdown = () => {
         </div>
         {showOptions && (
           <OptionMenu
-            options={languages.filter((language) => language.id !== chosenLang)}
+            options={languages?.filter(
+              (language) => language.id !== chosenLang
+            )}
             onSelect={resetOnChange}
           />
         )}

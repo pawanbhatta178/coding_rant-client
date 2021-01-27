@@ -13,10 +13,41 @@ import ModalContext from "./ModalContext";
 import QuestionContext from "./QuestionContext";
 import ErrorContext from "./ErrorContext";
 import ChallengeContext from "./ChallengeContext";
+import EditorContext from "./EditorContext";
+
 import userReducer from "./reducers/userReducer";
 import errorReducer from "./reducers/errorReducer";
 import modalReducer from "./reducers/modalReducer";
 import challengeReducer from "./reducers/challengeReducer";
+import editorReducer from "./reducers/editorReducer";
+
+const initialState = {
+  chosenLang: "js",
+  languages: [
+    {
+      id: "js",
+      name: "JavaScript",
+      active: true,
+      more: "Some more information",
+    },
+    { id: "py", name: "Python", active: true, more: "Coming soon" },
+    { id: "go", name: "Golang", active: true, more: "Coming soon" },
+    { id: "ts", name: "Typescript", active: true, more: "Coming soon" },
+    { id: "c", name: "C", active: false, more: "Coming soon" },
+    {
+      id: "cpp",
+      name: "C++",
+      active: false,
+      more: "Some more information",
+    },
+    {
+      id: "java",
+      name: "Java",
+      active: true,
+      more: "Some more information",
+    },
+  ],
+};
 
 function App() {
   const [userState, userDispatch] = React.useReducer(userReducer, null);
@@ -25,6 +56,11 @@ function App() {
   const [challengeState, challengeDispatch] = React.useReducer(
     challengeReducer,
     "Description"
+  );
+
+  const [editorState, editorDispatch] = React.useReducer(
+    editorReducer,
+    initialState
   );
 
   React.useEffect(() => {
@@ -55,36 +91,40 @@ function App() {
         <UserContext.Provider value={{ user: userState, userDispatch }}>
           <QuestionContext.Provider value={{ activeQuestionId: "1" }}>
             <ErrorContext.Provider value={{ error: errorState, errorDispatch }}>
-              <ChallengeContext.Provider
-                value={{
-                  challenge: challengeState,
-                  challengeDispatch: challengeDispatch,
-                }}
+              <EditorContext.Provider
+                value={{ editor: editorState, editorDispatch }}
               >
-                <NavBar className="navbar-height" />
-                <div className="w-screen body-height">
-                  <SplitPane
-                    className="flex border h-full"
-                    minLeftWidth="120px"
-                    minRightWidth="120px"
-                  >
-                    <EditorContainer className="h-full flex flex-col border " />
-                    <QuestionContainer className="h-full flex flex-col overflow-auto  pb-2 text-sm" />
-                  </SplitPane>
-                </div>
-
-                <CSSTransition
-                  in={typeof modalState === "string"}
-                  classNames="overlay"
-                  timeout={500}
-                  unmountOnExit
+                <ChallengeContext.Provider
+                  value={{
+                    challenge: challengeState,
+                    challengeDispatch: challengeDispatch,
+                  }}
                 >
-                  <Modal
-                    className="absolute top-0 bg-gray-800 bg-opacity-50 h-screen w-full py-24"
-                    onClick={() => modalDispatch({ type: "CLOSE_MODAL" })}
-                  />
-                </CSSTransition>
-              </ChallengeContext.Provider>
+                  <NavBar className="navbar-height" />
+                  <div className="w-screen body-height">
+                    <SplitPane
+                      className="flex border h-full"
+                      minLeftWidth="120px"
+                      minRightWidth="120px"
+                    >
+                      <EditorContainer className="h-full flex flex-col border " />
+                      <QuestionContainer className="h-full flex flex-col overflow-auto  pb-2 text-sm" />
+                    </SplitPane>
+                  </div>
+
+                  <CSSTransition
+                    in={typeof modalState === "string"}
+                    classNames="overlay"
+                    timeout={500}
+                    unmountOnExit
+                  >
+                    <Modal
+                      className="absolute top-0 bg-gray-800 bg-opacity-50 h-screen w-full py-24"
+                      onClick={() => modalDispatch({ type: "CLOSE_MODAL" })}
+                    />
+                  </CSSTransition>
+                </ChallengeContext.Provider>
+              </EditorContext.Provider>
             </ErrorContext.Provider>
           </QuestionContext.Provider>
         </UserContext.Provider>

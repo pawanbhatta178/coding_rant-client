@@ -14,12 +14,18 @@ const availableLanguage = {
 
 const Editor = () => {
   const editorRef = useRef();
+  const { editor, chosenLang, startingCodes, editorDispatch } = useContext(
+    EditorContext
+  );
   const [isEditorReady, setIsEditorReady] = useState(false);
-  const { chosenLang, startingCodes } = useContext(EditorContext);
 
   function handleEditorDidMount(_, editor) {
     setIsEditorReady(true);
     editorRef.current = editor;
+  }
+
+  function handleEditorChange(value, event) {
+    editorDispatch({ type: "UPDATE_CODE", payload: value });
   }
 
   return (
@@ -27,8 +33,9 @@ const Editor = () => {
       <MonacoEditor
         height="100%"
         language={availableLanguage[chosenLang] || "javascript"}
-        value={startingCodes[chosenLang]}
+        value={"DEFAULT"}
         editorDidMount={handleEditorDidMount}
+        onChange={handleEditorChange}
       />
     </div>
   );
