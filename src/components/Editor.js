@@ -1,6 +1,8 @@
 import React, { useState, useRef, useContext } from "react";
 import MonacoEditor from "@monaco-editor/react";
 import EditorContext from "../EditorContext.js";
+import QuestionContext from "../QuestionContext";
+import { getQuestion } from "../api/question";
 
 const availableLanguage = {
   js: "javascript",
@@ -14,10 +16,22 @@ const availableLanguage = {
 
 const Editor = () => {
   const editorRef = useRef();
-  const { editor, chosenLang, startingCodes, editorDispatch } = useContext(
-    EditorContext
-  );
-  const [isEditorReady, setIsEditorReady] = useState(false);
+  const { editor, editorDispatch } = useContext(EditorContext);
+  const { chosenLang } = editor;
+  const [setIsEditorReady] = useState(false);
+  const { activeQuestionId } = useContext(QuestionContext);
+  const [value, setValue] = useState("");
+
+  React.useEffect(() => {
+    (async () => {
+      const questionDetails = await getQuestion(activeQuestionId);
+      const starterCode = questionDetails[`${chosenLang}_starter_code`];
+      if (!starterCode) {
+        return;
+      }
+      setValue(starterCode);
+    })();
+  }, [activeQuestionId, chosenLang]);
 
   function handleEditorDidMount(_, editor) {
     setIsEditorReady(true);
@@ -33,7 +47,7 @@ const Editor = () => {
       <MonacoEditor
         height="100%"
         language={availableLanguage[chosenLang] || "javascript"}
-        value={"DEFAULT"}
+        value={value}
         editorDidMount={handleEditorDidMount}
         onChange={handleEditorChange}
       />

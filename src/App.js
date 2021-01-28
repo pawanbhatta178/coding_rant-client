@@ -15,12 +15,12 @@ import ErrorContext from "./ErrorContext";
 import ChallengeContext from "./ChallengeContext";
 import EditorContext from "./EditorContext";
 import SubmissionContext from "./SubmissionContext";
-
 import userReducer from "./reducers/userReducer";
 import errorReducer from "./reducers/errorReducer";
 import modalReducer from "./reducers/modalReducer";
 import challengeReducer from "./reducers/challengeReducer";
 import editorReducer from "./reducers/editorReducer";
+import submissionReducer from "./reducers/submissionReducer";
 
 const initialState = {
   chosenLang: "js",
@@ -58,12 +58,16 @@ function App() {
     challengeReducer,
     "Description"
   );
-
+  const [activeQuestionId, setActiveQuestionId] = React.useState("1");
   const [editorState, editorDispatch] = React.useReducer(
     editorReducer,
     initialState
   );
-  const [submission, setSubmission] = React.useState([]);
+  const [submission, submissionDispatch] = React.useReducer(
+    submissionReducer,
+    {}
+  );
+  const [submitting, setSubmitting] = React.useState(false);
 
   React.useEffect(() => {
     (async () => {
@@ -91,13 +95,20 @@ function App() {
     <div className="relative h-screen overflow-y-hidden">
       <ModalContext.Provider value={{ modal: modalState, modalDispatch }}>
         <UserContext.Provider value={{ user: userState, userDispatch }}>
-          <QuestionContext.Provider value={{ activeQuestionId: "1" }}>
+          <QuestionContext.Provider
+            value={{ activeQuestionId, setActiveQuestionId }}
+          >
             <ErrorContext.Provider value={{ error: errorState, errorDispatch }}>
               <EditorContext.Provider
                 value={{ editor: editorState, editorDispatch }}
               >
                 <SubmissionContext.Provider
-                  value={{ submission: submission, setSubmission }}
+                  value={{
+                    submission: submission,
+                    submissionDispatch,
+                    submitting,
+                    setSubmitting,
+                  }}
                 >
                   <ChallengeContext.Provider
                     value={{

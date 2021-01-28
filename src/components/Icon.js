@@ -7,6 +7,10 @@ import { FaUserCircle } from "react-icons/fa";
 import { BiLogOut, BiUser } from "react-icons/bi";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { CgMathEqual } from "react-icons/cg";
+import { FcCheckmark } from "react-icons/fc";
+import { RiCloseFill } from "react-icons/ri";
+import { BsFillCaretDownFill } from "react-icons/bs";
+
 const getIconComponent = ({ type, filled }) => {
   switch (type) {
     case "upVote":
@@ -51,6 +55,25 @@ const getIconComponent = ({ type, filled }) => {
           <CgMathEqual />
         </IconContext.Provider>
       );
+    case "Correct":
+      return (
+        <IconContext.Provider value={{ className: "text-green-600" }}>
+          <FcCheckmark />
+        </IconContext.Provider>
+      );
+    case "Wrong":
+      return (
+        <IconContext.Provider value={{ className: "text-red-600 " }}>
+          <RiCloseFill />
+        </IconContext.Provider>
+      );
+    case "More":
+      return (
+        <IconContext.Provider value={{ className: "text-gray-800 " }}>
+          <BsFillCaretDownFill />
+        </IconContext.Provider>
+      );
+
     default:
       return null;
   }

@@ -9,6 +9,21 @@
     "sample_input":"6",
     "sample_output":"4",
     "difficulty":"Easy",
-    "title":"Fibonacci Series"
+    "title":"Fibonacci Series",
+    "js_starter_code":"function fibonacci"
+},
+{
+    "id":"2",
+    "category":"database",
+    "successful_submissions":"1200",
+    "up_votes":"122",
+    "down_votes":"9129",
+    "question_prompt":"A Fibonacci sequence is a series of numbers in which each number (Fibonacci term) is the sum of the two preceding numbers.The first terms in this sequence are: 1, 1, 2, 3, 5, 8, 13, …. In addition, the zeroth Fibonacci term is 0. Write a function that returns the Nth term in this sequence. Adipisicing in reprehenderit magna culpa sunt cillum dolore culpa eu aliquip reprehenderit ex irure. Et proident veniam reprehenderit commodo sint amet officia non aute aliquip. Ut occaecat nulla qui qui occaecat. Exercitation laborum adipisicing laboris laboris excepteur elit cupidatat ad enim cillum reprehenderit. Magna amet exercitation deserunt qui consequat dolor est. Aliquip deserunt cupidatat anim adipisicing Lorem dolor cillum do consectetur ad. Duis fugiat cillum exercitation aliquip reprehenderit anim duis minim anim et voluptate duis do. Laborum aliquip proident aute ex fugiat incididunt. Do esse proident ex ullamco adipisicing irure nulla qui dolor cupidatat deserunt elit. Laborum nostrud esse est sunt consectetur occaecat labore ipsum. Aliqua laboris ullamco sit exercitation ut elit laboris eu. Incididunt aliqua culpa esse sint aliqua elit velit deserunt exercitation.",
+    "sample_input":"[1212,121]",
+    "sample_output":"[1212,121]",
+    "difficulty":"Hard",
+    "title":"NoSQL Database",
+    "js_starter_code":"function nosql"
+
 }
 ]

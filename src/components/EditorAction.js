@@ -5,6 +5,7 @@ import ModalContext from "../ModalContext";
 import ChallengeContext from "../ChallengeContext";
 import EditorContext from "../EditorContext";
 import SubmissionContext from "../SubmissionContext";
+import QuestionContext from "../QuestionContext";
 
 import compile from "../api/compile";
 
@@ -12,13 +13,19 @@ const EditorAction = ({ ...props }) => {
   const { user } = React.useContext(UserContext);
   const { modalDispatch } = React.useContext(ModalContext);
   const { challenge, challengeDispatch } = React.useContext(ChallengeContext);
-  const [submitting, setSubmitting] = React.useState(false);
   const { editor, editorDispatch } = React.useContext(EditorContext);
-  const { submission, setSubmission } = React.useContext(SubmissionContext);
+  const {
+    submission,
+    submissionDispatch,
+    submitting,
+    setSubmitting,
+  } = React.useContext(SubmissionContext);
+  const { activeQuestionId, setActiveQuestionId } = React.useContext(
+    QuestionContext
+  );
 
   return (
     <div {...props}>
-      {console.log(submission)}
       <Button
         size="sm"
         type={"neutral"}
@@ -32,10 +39,15 @@ const EditorAction = ({ ...props }) => {
           compile({
             source: editor.code,
             lang: editor.chosenLang,
-            questionId: "1",
+            questionId: activeQuestionId,
           }).then((res) => {
-            setSubmission((current) => {
-              return [...current, res];
+            console.log(submission);
+            submissionDispatch({
+              type: "ADD_SUBMISSION",
+              payload: {
+                id: activeQuestionId,
+                submission: res,
+              },
             });
             setSubmitting(false);
           });
@@ -43,6 +55,7 @@ const EditorAction = ({ ...props }) => {
       >
         <div>Submit</div>
       </Button>
+      <button onClick={() => setActiveQuestionId("2")}>Next</button>
     </div>
   );
 };
