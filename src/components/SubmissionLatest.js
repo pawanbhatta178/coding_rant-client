@@ -1,15 +1,23 @@
 import React from "react";
 import Icon from "./Icon";
+import QuestionContext from "../QuestionContext";
+
 const SubmissionLatest = ({ submission }) => {
+  const { activeQuestionId } = React.useContext(QuestionContext);
   const [error, setError] = React.useState(submission?.error);
   const [result, setResult] = React.useState(submission?.testResult);
+
+  React.useEffect(() => {
+    console.log("Ran");
+  }, [activeQuestionId]);
+
   return (
-    <>
+    <div className="pb-6 mb-6 ">
       {error ? (
-        <div className="text-red-600 flex flex-col">
-          <div className="text-xl">{error.name}</div>
-          <div className="border bg-gray-100 overflow-y-scroll h-24 p-2 rounded-sm">
-            {error.stack || error.message}
+        <div className="text-red-600 flex flex-col ">
+          <div className="text-xl pb-4">{error.name || "Error"}</div>
+          <div className="border bg-red-100 overflow-y-scroll h-24 p-2 rounded-sm">
+            {error.stack || error.message || error}
           </div>
         </div>
       ) : (
@@ -29,9 +37,9 @@ const SubmissionLatest = ({ submission }) => {
             Passed
           </div>
           {result.map((testCase, i) => {
-            console.log(result);
             return (
               <React.Fragment key={i}>
+                {console.log(activeQuestionId)}
                 <div className="col-span-1 border text-gray-600 p-2">
                   {testCase.id}
                 </div>
@@ -53,7 +61,7 @@ const SubmissionLatest = ({ submission }) => {
           })}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

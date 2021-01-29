@@ -4,13 +4,15 @@ import QuestionDescription from "./QuestionDescription";
 import QuestionNavBar from "./QuestionNavBar";
 import QuestionResult from "./QuestionResult";
 import ChallengeContext from "../ChallengeContext";
+import QuestionContext from "../QuestionContext";
+import SubmissionContext from "../SubmissionContext";
 
-const renderQuestionComponent = (componentName, data) => {
+const renderQuestionComponent = (componentName, data, result) => {
   switch (componentName) {
     case "Description":
       return <QuestionDescription questionDetails={data} />;
     case "Result":
-      return <QuestionResult />;
+      return <QuestionResult result={result} />;
     case "Leaderboard":
       return <LeaderBoard />;
     default:
@@ -21,6 +23,19 @@ const renderQuestionComponent = (componentName, data) => {
 const Question = ({ questionDetails }) => {
   const { challenge, challengeDispatch } = React.useContext(ChallengeContext);
 
+  const { submission } = React.useContext(SubmissionContext);
+  const { activeQuestionId } = React.useContext(QuestionContext);
+  const [result, setResult] = React.useState();
+
+  React.useEffect(() => {
+    let data = submission[activeQuestionId];
+    console.log(data);
+    if (!data) {
+      setResult(null);
+    } else {
+      setResult(data);
+    }
+  }, [submission, activeQuestionId]);
   return (
     <>
       <QuestionNavBar
@@ -28,7 +43,7 @@ const Question = ({ questionDetails }) => {
         challengeState={challenge}
         challengeDispatch={challengeDispatch}
       />
-      {renderQuestionComponent(challenge, questionDetails)}
+      {renderQuestionComponent(challenge, questionDetails, result)}
     </>
   );
 };

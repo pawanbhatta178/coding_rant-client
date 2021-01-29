@@ -4,22 +4,11 @@ import QuestionContext from "../QuestionContext";
 import Loading from "./Loading";
 import QuestionSubmission from "./QuestionSubmission";
 
-const QuestionResult = () => {
-  const { submission, submitting } = React.useContext(SubmissionContext);
-  const { activeQuestionId } = React.useContext(QuestionContext);
-  const [result, setResult] = React.useState();
-
-  React.useEffect(() => {
-    let data = submission[activeQuestionId];
-    if (!data) {
-      setResult(null);
-    } else {
-      setResult(data);
-    }
-  }, [submission, activeQuestionId]);
+const QuestionResult = ({ result }) => {
+  const { submitting } = React.useContext(SubmissionContext);
 
   return (
-    <div className="m-2">
+    <div className="p-2">
       {submitting ? (
         <Loading text="Submitting" />
       ) : (

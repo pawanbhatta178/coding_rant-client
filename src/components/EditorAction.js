@@ -26,6 +26,7 @@ const EditorAction = ({ ...props }) => {
 
   return (
     <div {...props}>
+      <button onClick={() => setActiveQuestionId("1")}>Previous</button>
       <Button
         size="sm"
         type={"neutral"}

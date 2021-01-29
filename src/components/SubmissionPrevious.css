@@ -1,0 +1,24 @@
+.result-dropdown-enter {
+  transform: scale(1, 0);
+  transform-origin: top;
+  opacity: 0;
+}
+
+.result-dropdown-enter-active {
+  transform: scale(1, 1);
+  opacity: 1;
+  transition: all ease-out 300ms;
+}
+
+.result-dropdown-exit {
+  transform: translateY(0%);
+  transform: scale(1, 1);
+  transform-origin: top;
+  opacity: 1;
+}
+
+.result-dropdown-exit-active {
+  transform: scale(1, 0);
+  opacity: 0;
+  transition: all ease-in 300ms;
+}

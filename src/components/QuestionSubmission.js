@@ -4,7 +4,7 @@ import SubmissionPrevious from "./SubmissionPrevious";
 
 const QuestionSubmission = ({ submissions }) => {
   return submissions.length === 0 ? (
-    <div>No Submissions Yet</div>
+    <div className="flex justify-center items-center">No Submissions Yet</div>
   ) : (
     submissions.map((submission, i) => {
       return i === 0 ? (
