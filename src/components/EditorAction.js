@@ -6,7 +6,7 @@ import ChallengeContext from "../ChallengeContext";
 import EditorContext from "../EditorContext";
 import SubmissionContext from "../SubmissionContext";
 import QuestionContext from "../QuestionContext";
-
+import Icon from "./Icon";
 import compile from "../api/compile";
 
 const EditorAction = ({ ...props }) => {
@@ -26,7 +26,9 @@ const EditorAction = ({ ...props }) => {
 
   return (
     <div {...props}>
-      <button onClick={() => setActiveQuestionId("1")}>Previous</button>
+      <Button size="sm" type="basic" onClick={() => setActiveQuestionId("1")}>
+        <Icon type="Previous" />
+      </Button>
       <Button
         size="sm"
         type={"neutral"}
@@ -56,7 +58,9 @@ const EditorAction = ({ ...props }) => {
       >
         <div>Submit</div>
       </Button>
-      <button onClick={() => setActiveQuestionId("2")}>Next</button>
+      <Button size="sm" type="basic" onClick={() => setActiveQuestionId("2")}>
+        <Icon type="Next" />
+      </Button>
     </div>
   );
 };

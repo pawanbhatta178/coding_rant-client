@@ -10,6 +10,7 @@ import { CgMathEqual } from "react-icons/cg";
 import { FcCheckmark } from "react-icons/fc";
 import { RiCloseFill } from "react-icons/ri";
 import { BsFillCaretDownFill } from "react-icons/bs";
+import { GrNext, GrPrevious } from "react-icons/gr";
 
 const getIconComponent = ({ type, filled }) => {
   switch (type) {
@@ -73,7 +74,18 @@ const getIconComponent = ({ type, filled }) => {
           <BsFillCaretDownFill />
         </IconContext.Provider>
       );
-
+    case "Next":
+      return (
+        <IconContext.Provider value={{ className: "text-gray-800 " }}>
+          <GrNext />
+        </IconContext.Provider>
+      );
+    case "Previous":
+      return (
+        <IconContext.Provider value={{ className: "text-gray-800 " }}>
+          <GrPrevious />
+        </IconContext.Provider>
+      );
     default:
       return null;
   }
