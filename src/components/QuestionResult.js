@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import SubmissionContext from "../SubmissionContext";
-import QuestionContext from "../QuestionContext";
 import Loading from "./Loading";
 import QuestionSubmission from "./QuestionSubmission";
 
 const QuestionResult = ({ result }) => {
-  const { submitting } = React.useContext(SubmissionContext);
+  const { submitting } = useContext(SubmissionContext);
 
   return (
     <div className="p-2">
