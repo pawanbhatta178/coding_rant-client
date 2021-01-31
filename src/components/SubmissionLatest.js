@@ -4,8 +4,8 @@ import QuestionContext from "../QuestionContext";
 
 const SubmissionLatest = ({ submission }) => {
   const { activeQuestionId } = React.useContext(QuestionContext);
-  const [error, setError] = React.useState(submission?.error);
-  const [result, setResult] = React.useState(submission?.testResult);
+  const [error] = React.useState(submission?.error);
+  const [result] = React.useState(submission?.testResult);
 
   React.useEffect(() => {
     console.log("Ran");
