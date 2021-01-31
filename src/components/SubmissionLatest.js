@@ -26,16 +26,16 @@ const SubmissionLatest = ({ submission }) => {
             <div className="flex gap-x-2">
               <div className="text-purple-200">Time Taken:</div>
               <div>
-                {Math.round(submission?.time_taken * 1000) / 1000 || "NA"}
+                {Math.round(submission?.timeTaken * 1000) / 1000 || "NA"}
               </div>
             </div>
             <div className="flex gap-x-2">
               <div className="text-purple-200">Word Count:</div>
-              <div>{submission?.word_count || "NA"}</div>
+              <div>{submission?.wordCount || "NA"}</div>
             </div>
             <div className="flex gap-x-2">
               <div className="text-purple-200">Rank:</div>
-              <div>{submission?.rank || "NA"}</div>
+              <div>{submission?.rankedAt || "NA"}</div>
             </div>
           </div>
           <div className="grid grid-cols-4 ">
