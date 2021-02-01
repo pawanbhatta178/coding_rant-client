@@ -129,7 +129,7 @@ function App() {
                     </div>
 
                     <CSSTransition
-                      in={typeof modalState === "string"}
+                      in={Boolean(modalState)}
                       classNames="overlay"
                       timeout={500}
                       unmountOnExit

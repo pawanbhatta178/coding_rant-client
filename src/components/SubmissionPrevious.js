@@ -20,7 +20,7 @@ const SmallCardStyles = {
   passed: "bg-green-100 border-green-400 text-green-700",
   error: "bg-red-100 border-red-600 text-red-700",
   failed: "bg-yellow-100 border-yellow-600 text-yellow-700",
-  ranked: "bg-pink-500 text-white",
+  best: "bg-pink-500 text-white",
 };
 
 const SmallCard = ({ type }) => {
@@ -48,7 +48,7 @@ const SubmissionPrevious = ({ submission }) => {
   return (
     <>
       <div
-        className={`flex justify-between items-center p-2 mb-4  cursor-pointer border border-l-4 hover:bg-gray-50 ${style(
+        className={`flex justify-between items-center p-2 mb-4  cursor-pointer border border-l-4 hover:bg-gray-50 rounded-sm ${style(
           error,
           result,
           passed
@@ -65,7 +65,7 @@ const SubmissionPrevious = ({ submission }) => {
           </div>
         </div>
         <div className="flex gap-x-2 ">
-          {ranked && <SmallCard type="ranked" />}
+          {ranked && <SmallCard type="best" />}
           {passed && <SmallCard type="passed" />}
           {error && <SmallCard type="error" />}
           {!passed && !error && <SmallCard type="failed" />}

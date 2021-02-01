@@ -5,7 +5,7 @@ import "./Modal.css";
 import Login from "./Login";
 import Register from "./Register";
 import Profile from "./Profile";
-
+import Code from "./Code";
 import CardError from "./CardError";
 import ModalContext from "../ModalContext";
 import ErrorContext from "../ErrorContext";
@@ -40,7 +40,7 @@ const Modal = (props) => {
   return (
     <div {...props}>
       <CSSTransition
-        in={typeof modal === "string"}
+        in={Boolean(modal)}
         unmountOnExit
         classNames="modal"
         timeout={2000}
@@ -63,6 +63,7 @@ const Modal = (props) => {
             />
           )}
           {renderComponent(modal)}
+          {modal?.code && <Code source={modal.code} />}
         </div>
       </CSSTransition>
     </div>

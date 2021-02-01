@@ -1,0 +1,18 @@
+.button-enter {
+  transform: scaleY(0);
+}
+
+.button-enter-active {
+  transform: scaleY(1);
+  opacity: 1;
+  transition: all ease-out 1s;
+}
+
+.button-exit {
+  opacity: 1;
+}
+
+.button-exit-active {
+  opacity: 0;
+  transition: all ease-out 1s;
+}

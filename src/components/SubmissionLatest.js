@@ -1,15 +1,12 @@
 import React from "react";
 import Icon from "./Icon";
-import QuestionContext from "../QuestionContext";
+import Button from "./Button";
+import ModalContext from "../ModalContext";
 
 const SubmissionLatest = ({ submission }) => {
-  const { activeQuestionId } = React.useContext(QuestionContext);
+  const { modalDispatch } = React.useContext(ModalContext);
   const [error] = React.useState(submission?.error);
   const [result] = React.useState(submission?.testResult);
-
-  React.useEffect(() => {
-    console.log("Ran");
-  }, [activeQuestionId]);
 
   return (
     <div className="pb-6 mb-6 ">
@@ -21,7 +18,7 @@ const SubmissionLatest = ({ submission }) => {
           </div>
         </div>
       ) : (
-        <>
+        <div className="flex flex-col gap-y-1">
           <div className="text-xs flex gap-x-4 h-10 bg-gradient-to-r from-purple-400 to-purple-500 text-white items-center mb-2 px-2 rounded-sm">
             <div className="flex gap-x-2">
               <div className="text-purple-200">Time Taken:</div>
@@ -56,7 +53,6 @@ const SubmissionLatest = ({ submission }) => {
             {result.map((testCase, i) => {
               return (
                 <React.Fragment key={i}>
-                  {console.log(activeQuestionId)}
                   <div className="col-span-1 border text-gray-600 p-2">
                     {testCase.id}
                   </div>
@@ -77,7 +73,21 @@ const SubmissionLatest = ({ submission }) => {
               );
             })}
           </div>
-        </>
+          {submission?.code && (
+            <Button
+              className="flex justify-end"
+              type="basic"
+              size="xs"
+              onClick={() =>
+                modalDispatch({ type: "SHOW_CODE", payload: submission.code })
+              }
+            >
+              <div className="flex gap-x-1 items-center ">
+                See Code <Icon type="Eye" />
+              </div>
+            </Button>
+          )}
+        </div>
       )}
     </div>
   );

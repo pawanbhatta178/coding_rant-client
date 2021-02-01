@@ -22,3 +22,34 @@
   opacity: 0;
   transition: all ease-in 300ms;
 }
+
+.icon-rotate-enter {
+  transform: rotate(0deg);
+}
+
+/* .icon-rotate-enter-active {
+  animation-name: rotate;
+  animation-duration: 2000ms;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+}
+
+.icon-rotate-exit {
+  transform: rotate(180deg);
+}
+
+.icon-rotate-exit-active {
+  animation-name: rotate;
+  animation-duration: 2000ms;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframe rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+} */

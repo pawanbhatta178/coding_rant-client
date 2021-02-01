@@ -8,6 +8,10 @@ const modalReducer = (state, action) => {
       return "Profile";
     case "CLOSE_MODAL":
       return null;
+    case "SHOW_CODE":
+      return {
+        code: action.payload,
+      };
     default:
       return state;
   }
