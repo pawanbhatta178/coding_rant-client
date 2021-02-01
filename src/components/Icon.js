@@ -6,7 +6,7 @@ import { IconContext } from "react-icons";
 import { FaUserCircle } from "react-icons/fa";
 import { BiLogOut, BiUser } from "react-icons/bi";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
-import { CgMathEqual } from "react-icons/cg";
+import { CgMathEqual, CgHashtag } from "react-icons/cg";
 import { FcCheckmark } from "react-icons/fc";
 import { RiCloseFill } from "react-icons/ri";
 import { BsFillCaretDownFill } from "react-icons/bs";
@@ -70,7 +70,7 @@ const getIconComponent = ({ type, filled }) => {
       );
     case "More":
       return (
-        <IconContext.Provider value={{ className: "text-gray-800 " }}>
+        <IconContext.Provider value={{ className: "text-gray-600 text-xs" }}>
           <BsFillCaretDownFill />
         </IconContext.Provider>
       );
@@ -84,6 +84,12 @@ const getIconComponent = ({ type, filled }) => {
       return (
         <IconContext.Provider value={{ className: "text-gray-800 " }}>
           <GrPrevious />
+        </IconContext.Provider>
+      );
+    case "Hash":
+      return (
+        <IconContext.Provider value={{ className: "text-gray-500 text-lg" }}>
+          <CgHashtag />
         </IconContext.Provider>
       );
     default:

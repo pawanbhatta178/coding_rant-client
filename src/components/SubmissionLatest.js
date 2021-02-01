@@ -22,7 +22,7 @@ const SubmissionLatest = ({ submission }) => {
         </div>
       ) : (
         <>
-          <div className="text-xs flex gap-x-4 h-10 bg-gradient-to-r from-purple-500 to-purple-600 text-white items-center mb-2 px-2 rounded-sm">
+          <div className="text-xs flex gap-x-4 h-10 bg-gradient-to-r from-purple-400 to-purple-500 text-white items-center mb-2 px-2 rounded-sm">
             <div className="flex gap-x-2">
               <div className="text-purple-200">Time Taken:</div>
               <div>
@@ -35,7 +35,7 @@ const SubmissionLatest = ({ submission }) => {
             </div>
             <div className="flex gap-x-2">
               <div className="text-purple-200">Rank:</div>
-              <div>{submission?.rankedAt || "NA"}</div>
+              <div>{submission?.ranked ? "Yes" : "No"}</div>
             </div>
           </div>
           <div className="grid grid-cols-4 ">

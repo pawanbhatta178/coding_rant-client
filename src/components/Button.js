@@ -5,7 +5,7 @@ export const ButtonType = {
     "secondary-bg secondary-text font-semibold rounded shadow-2xl border bg-gradient-to-r from-purple-500 to-purple-900 hover:bg-purple-700 focus:outline-none ",
   secondary: `${baseButtonStyle} primary-bg primary-text hover  border border-purple-300 hover:border-purple-800 font-semibold shadow rounded focus:outline-none `,
   basic:
-    "bg-transparent opacity-70 hover:opacity-100 text-gray-800 focus:outline-none border ",
+    "bg-transparent opacity-70 hover:opacity-100 text-gray-800 focus:outline-none  ",
   basicPurple:
     "bg-transparent opacity-70  text-purple-800 hover:text-purple-900 focus:outline-none ",
   neutral:
