@@ -74,16 +74,15 @@ const SubmissionLatest = ({ submission }) => {
             })}
           </div>
           {submission?.code && (
-            <Button
-              className="flex justify-end"
-              type="basic"
-              size="xs"
-              onClick={() =>
-                modalDispatch({ type: "SHOW_CODE", payload: submission.code })
-              }
-            >
-              <div className="flex gap-x-1 items-center ">
-                See Code <Icon type="Eye" />
+            <Button className="flex justify-end" type="basic" size="xs">
+              <div
+                className="flex gap-x-1 items-center "
+                onClick={() =>
+                  modalDispatch({ type: "SHOW_CODE", payload: submission.code })
+                }
+              >
+                <div className="font-semibold"> See Code</div>{" "}
+                <Icon type="Eye" />
               </div>
             </Button>
           )}
