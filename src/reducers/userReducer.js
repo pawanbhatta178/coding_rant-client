@@ -4,6 +4,11 @@ const userReducer = (state, action) => {
   switch (action.type) {
     case "USER_LOADED":
       return action.payload;
+    case "SET_TOKEN":
+      return {
+        ...state,
+        token: action.payload,
+      };
     case "LOGIN":
       return logUserIn(action.payload.login, action.payload.password);
     case "CLEAR":

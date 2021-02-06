@@ -4,6 +4,8 @@ import Input from "./Input";
 import ModalContext from "../ModalContext";
 import UserContext from "../UserContext";
 import ErrorContext from "../ErrorContext";
+import { logUserIn } from "../api/user";
+import { useMutation } from "react-query";
 
 const Login = () => {
   const { userDispatch } = useContext(UserContext);
@@ -12,6 +14,16 @@ const Login = () => {
   const { modalDispatch } = useContext(ModalContext);
   const { error } = useContext(ErrorContext);
   const [loginError, setLoginError] = useState();
+
+  const mutation = useMutation(logUserIn, {
+    onSuccess: (data) => {
+      console.log(data);
+      userDispatch({ type: "SET_TOKEN", payload: data });
+    },
+    onError: (err) => {
+      console.log(err);
+    },
+  });
 
   React.useEffect(() => {
     setLoginError(error?.loginError);
@@ -44,12 +56,12 @@ const Login = () => {
         size="lg"
         type="primary"
         className="mt-4"
-        onClick={() =>
-          userDispatch({
-            type: "LOGIN",
-            payload: { login: login, password: password },
-          })
-        }
+        onClick={() => {
+          mutation.mutate({
+            username: login,
+            password,
+          });
+        }}
       >
         {" "}
         Sign In

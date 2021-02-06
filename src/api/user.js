@@ -1,27 +1,76 @@
-const user = require("../data/user.json");
-const users = require("../data/users.json");
+import axios from "axios";
 
-const logUserIn = (login, password) => {
-  const user = users.find((user) => {
-    return login === user.username || login === user.email;
-  });
-  if (!user) {
-    return { error: "Incorrect username/password" };
+const logUserIn = async ({ username, password }) => {
+  try {
+    const { data } = await axios.post(
+      "http://localhost:3000/login",
+      { username, password },
+      { withCredentials: true }
+    );
+    return data;
+  } catch (err) {
+    console.log(err);
+    return null;
   }
-  if (user.password !== password) {
-    return { error: "Incorrect username/password" };
-  }
-  return user;
 };
 
+const signUserUp = async ({
+  username,
+  email,
+  password,
+  country,
+  displayName,
+}) => {
+  try {
+    const { data } = await axios.post(
+      "http://localhost:3000/register",
+      { username, email, password, country, displayName },
+      { withCredentials: true }
+    );
+    return data;
+  } catch (err) {
+    return null;
+  }
+};
+
+const getAccessToken = async () => {
+  try {
+    const { data } = await axios.post(
+      "http://localhost:3000/token",
+      {},
+      { withCredentials: true }
+    );
+    return data;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
 const getUserDetails = async () => {
-  return user;
+  try {
+    const { data } = await axios.post(
+      "http://localhost:3000/user",
+      {},
+      { withCredentials: true }
+    );
+    return data;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
 };
 
-const upvoteQuestion = async (id) => {
-  return {
-    ...user,
-  };
+const logUserOut = async () => {
+  try {
+    const { data } = await axios.post(
+      "http://localhost:3000/logout",
+      {},
+      { withCredentials: true }
+    );
+    return data;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
 };
-
-module.exports = { getUserDetails, logUserIn };
+export { logUserIn, getAccessToken, getUserDetails, logUserOut, signUserUp };
