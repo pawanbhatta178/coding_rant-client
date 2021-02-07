@@ -17,8 +17,9 @@ const Login = () => {
 
   const mutation = useMutation(logUserIn, {
     onSuccess: (data) => {
-      console.log(data);
-      userDispatch({ type: "SET_TOKEN", payload: data });
+      if (data?.token) {
+        userDispatch({ type: "SET_TOKEN", payload: data.token });
+      }
     },
     onError: (err) => {
       console.log(err);

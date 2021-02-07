@@ -6,7 +6,6 @@ import NavBar from "./components/NavBar";
 import SplitPane from "./components/SplitPane";
 import EditorContainer from "./components/EditorContainer";
 import QuestionContainer from "./components/QuestionContainer";
-import { getUserDetails } from "./api/user";
 
 import UserContext from "./UserContext";
 import ModalContext from "./ModalContext";
@@ -21,6 +20,11 @@ import modalReducer from "./reducers/modalReducer";
 import challengeReducer from "./reducers/challengeReducer";
 import editorReducer from "./reducers/editorReducer";
 import submissionReducer from "./reducers/submissionReducer";
+import useAuthHeader from "./hooks/useAuthHeader";
+import useAuthToken from "./hooks/useAuthToken";
+import useRefetchToken from "./hooks/useRefetchToken";
+
+const ACCESS_KEY_TIMEOUT = 15000;
 
 const initialState = {
   chosenLang: "js",
@@ -68,13 +72,21 @@ function App() {
     {}
   );
   const [submitting, setSubmitting] = React.useState(false);
+  const { token } = useAuthToken();
+
+  useAuthHeader(userState?.token);
+  const { token: newToken } = useRefetchToken(
+    userState?.token,
+    ACCESS_KEY_TIMEOUT
+  );
 
   React.useEffect(() => {
-    (async () => {
-      const user = await getUserDetails();
-      userDispatch({ type: "USER_LOADED", payload: user });
-    })();
-  }, []);
+    userDispatch({ type: "SET_TOKEN", payload: token });
+  }, [token]);
+
+  React.useEffect(() => {
+    userDispatch({ type: "SET_TOKEN", payload: newToken });
+  }, [newToken]);
 
   React.useEffect(() => {
     if (!userState) {

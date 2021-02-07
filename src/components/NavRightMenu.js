@@ -8,7 +8,7 @@ const NavRightMenu = () => {
   const { modalDispatch } = useContext(ModalContext);
   return (
     <div className="flex justify-end w-1/2">
-      {user ? (
+      {user?.token ? (
         <>
           <NavItem
             type="profile"
