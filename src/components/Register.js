@@ -2,12 +2,16 @@ import React, { useState, useContext, useEffect } from "react";
 import Button from "./Button";
 import Input from "./Input";
 import ModalContext from "../ModalContext";
+import UserContext from "../UserContext";
 import RegisterErrorText from "./RegisterErrorText";
 import validateEmail from "../util/validateEmail";
 import validatePassword from "../util/validatePassword";
+import { useMutation } from "react-query";
+import { signUserUp } from "../api/user";
 
 const Register = () => {
   const { modalDispatch } = useContext(ModalContext);
+  const { userDispatch } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(null);
   const [password, setPassword] = useState("");
@@ -16,6 +20,16 @@ const Register = () => {
   const [confirmPwdError, setConfirmPwdError] = useState(null);
   const [username, setUsername] = useState("");
   const [usernameError] = useState(null);
+  const [error, setError] = useState(null);
+
+  const mutation = useMutation(signUserUp, {
+    onSuccess: (data) => {
+      userDispatch({ type: "SET_TOKEN", payload: data });
+    },
+    onError: (err) => {
+      setError("Some required fields are missing");
+    },
+  });
 
   useEffect(() => {
     if (confirmPwd.length === 0 || password.length === 0) {
@@ -61,6 +75,7 @@ const Register = () => {
       <div className="font-semibold text-gray-600 text-2xl mx-auto">
         Register
       </div>
+      {error && <div className="mt-3 text-red-600 text-xs">{error}</div>}
       <Input
         placeholder="Username"
         name="username"
@@ -98,7 +113,24 @@ const Register = () => {
       />
       <RegisterErrorText msg={emailError} />
 
-      <Button size="lg" type="primary" className="mt-4">
+      <Button
+        size="lg"
+        type="primary"
+        className="mt-4"
+        onClick={() => {
+          if (emailError || passwordError || usernameError || confirmPwdError) {
+            setError(
+              "Cannot sign up because some required fields are missing."
+            );
+            return;
+          }
+          mutation.mutate({
+            username,
+            password,
+            email,
+          });
+        }}
+      >
         {" "}
         Sign Up
       </Button>

@@ -1,17 +1,12 @@
 import axios from "axios";
 
 const logUserIn = async ({ username, password }) => {
-  try {
-    const { data } = await axios.post(
-      "http://localhost:3000/login",
-      { username, password },
-      { withCredentials: true }
-    );
-    return data;
-  } catch (err) {
-    console.log(err);
-    return null;
-  }
+  const { data } = await axios.post(
+    "http://localhost:3000/login",
+    { username, password },
+    { withCredentials: true }
+  );
+  return data;
 };
 
 const signUserUp = async ({
@@ -21,16 +16,12 @@ const signUserUp = async ({
   country,
   displayName,
 }) => {
-  try {
-    const { data } = await axios.post(
-      "http://localhost:3000/register",
-      { username, email, password, country, displayName },
-      { withCredentials: true }
-    );
-    return data;
-  } catch (err) {
-    return null;
-  }
+  const { data } = await axios.post(
+    "http://localhost:3000/register",
+    { username, email, password, country, displayName },
+    { withCredentials: true }
+  );
+  return data;
 };
 
 const getAccessToken = async () => {
@@ -46,31 +37,22 @@ const getAccessToken = async () => {
     return null;
   }
 };
+
 const getUserDetails = async () => {
-  try {
-    const { data } = await axios.post(
-      "http://localhost:3000/user",
-      {},
-      { withCredentials: true }
-    );
-    return data;
-  } catch (err) {
-    console.log(err);
-    return null;
-  }
+  const { data } = await axios.post(
+    "http://localhost:3000/user",
+    {},
+    { withCredentials: true }
+  );
+  return data;
 };
 
 const logUserOut = async () => {
-  try {
-    const { data } = await axios.post(
-      "http://localhost:3000/logout",
-      {},
-      { withCredentials: true }
-    );
-    return data;
-  } catch (err) {
-    console.log(err);
-    return null;
-  }
+  const { data } = await axios.post(
+    "http://localhost:3000/logout",
+    {},
+    { withCredentials: true }
+  );
+  return data;
 };
 export { logUserIn, getAccessToken, getUserDetails, logUserOut, signUserUp };

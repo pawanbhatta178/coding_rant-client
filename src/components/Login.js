@@ -22,7 +22,7 @@ const Login = () => {
       }
     },
     onError: (err) => {
-      console.log(err);
+      setLoginError({ error: "Incorrect Username/Password" });
     },
   });
 
